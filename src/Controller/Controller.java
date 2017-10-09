@@ -30,13 +30,14 @@ public class Controller {
         PrgState prg = repo.getCurrentProgram().get(0);
         while(!prg.getStack().isEmpty()){
             try{
-                oneStep(prg);
-                System.out.print(prg.toString());
+                prg = oneStep(prg);
+                //System.out.print(prg.toString());
                 //display program state eventually
             }
             catch (MyStmtExecException e){
                 throw new MyStmtExecException(e.getMessage());
             }
         }
+        System.out.print(prg.getOut());
     }
 }

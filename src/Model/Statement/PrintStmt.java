@@ -10,7 +10,6 @@ public class PrintStmt implements IStmt {
     public PrintStmt(Expr expr){ expression = expr; }
 
     public PrgState execute(PrgState state){
-        //state.getOut().add(expression.eval(state.getSymTable()));
         state.setOut(expression.eval(state.getSymTable()));
         return state;
     }

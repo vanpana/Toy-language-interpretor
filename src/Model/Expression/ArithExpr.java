@@ -2,13 +2,12 @@ package Model.Expression;
 
 import Model.ADT.Interfaces.MyIDictionary;
 
-enum Operation {PLUS, MINUS, MULTIPLY, DIVIDE}
 
 public class ArithExpr extends Expr{
     private Expr e1, e2;
     private Operation operation;
 
-    public ArithExpr(Expr e1, Expr e2, Operation operation) {
+    public ArithExpr(Operation operation, Expr e1, Expr e2) {
         this.e1 = e1;
         this.e2 = e2;
         this.operation = operation;
