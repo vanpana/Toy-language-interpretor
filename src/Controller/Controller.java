@@ -13,19 +13,25 @@ public class Controller {
         this.repo = repo;
     }
 
-    PrgState oneStep(PrgState state) throws MyStmtExecException {
+    public void setMain(PrgState state){
+        repo.getCurrentProgram().clear();
+        repo.getCurrentProgram().add(state);
+    }
+
+    private PrgState oneStep(PrgState state) throws MyStmtExecException {
         MyIStack<IStmt> stack = state.getStack();
         if (stack.isEmpty()) throw new MyStmtExecException("Stack is empty!");
         IStmt currentStatement = stack.pop();
         return currentStatement.execute(state);
     }
 
-    void allSteps() throws MyStmtExecException{
+    public void allSteps() throws MyStmtExecException{
         // getting just the first program
         PrgState prg = repo.getCurrentProgram().get(0);
         while(!prg.getStack().isEmpty()){
             try{
                 oneStep(prg);
+                System.out.print(prg.toString());
                 //display program state eventually
             }
             catch (MyStmtExecException e){

@@ -1,9 +1,17 @@
 package Model;
 
+import Model.ADT.Classes.MyDictionary;
+import Model.ADT.Classes.MyList;
+import Model.ADT.Classes.MyStack;
 import Model.ADT.Interfaces.MyIDictionary;
 import Model.ADT.Interfaces.MyIList;
 import Model.ADT.Interfaces.MyIStack;
 import Model.Statement.IStmt;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.HashMap;
 
 public class PrgState {
     private MyIStack<IStmt> exeStack;
@@ -11,11 +19,10 @@ public class PrgState {
     private MyIList<Integer> out;
     private IStmt originalProgram;
 
-    public PrgState(MyIStack<IStmt> stack, MyIDictionary<String, Integer> symTbl,
-                    MyIList<Integer> outlist, IStmt program){
-        exeStack = stack;
-        symTable = symTbl;
-        out = outlist;
+    public PrgState(IStmt program){
+        exeStack = new MyStack<>(new ArrayDeque<>());
+        symTable = new MyDictionary<>(new HashMap<>());
+        out = new MyList<>(new ArrayList<>());
         originalProgram = program;
         exeStack.push(program);
     }
@@ -40,7 +47,9 @@ public class PrgState {
 
     //TODO: setters for PrgState
 
-    //TODO: override PrgState toString
+    public void setOut(Integer number) {
+        this.out.add(number);
+    }
 
     @Override
     public String toString() {

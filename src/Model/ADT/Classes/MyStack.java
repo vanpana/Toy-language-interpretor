@@ -2,13 +2,14 @@ package Model.ADT.Classes;
 
 import Model.ADT.Interfaces.MyIStack;
 
+import java.lang.reflect.Array;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class MyStack<T> implements MyIStack<T> {
-    Deque<T> stack;
+    private ArrayDeque<T> stack;
 
-    MyStack() { stack = new ArrayDeque<T>(); }
+    public MyStack(ArrayDeque<T> stk) { stack = stk; }
     @Override
     public T pop() {
         return stack.pop();

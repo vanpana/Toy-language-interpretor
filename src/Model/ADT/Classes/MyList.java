@@ -2,12 +2,13 @@ package Model.ADT.Classes;
 
 import Model.ADT.Interfaces.MyIList;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MyList<T> implements MyIList<T> {
     ArrayList<T> list;
 
-    public MyList() { list = new ArrayList<>(); }
+    public MyList(ArrayList<T> lst) { list = lst; }
 
     @Override
     public void add(T item) {

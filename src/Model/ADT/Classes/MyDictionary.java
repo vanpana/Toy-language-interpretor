@@ -10,8 +10,8 @@ import java.util.List;
 public class MyDictionary<K, V> implements MyIDictionary<K,V> {
     private HashMap<K, V> dict;
 
-    public MyDictionary() {
-        dict = new HashMap<>();
+    public MyDictionary(HashMap<K, V> map) {
+        dict = map;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class MyDictionary<K, V> implements MyIDictionary<K,V> {
 
     @Override
     public MyIDictionary<K, V> clone() {
-        MyIDictionary<K, V> newdict = new MyDictionary<>();
+        MyIDictionary<K, V> newdict = new MyDictionary<>(new HashMap<>());
 
         for (K key: dict.keySet())
             newdict.put(key, dict.get(key));
