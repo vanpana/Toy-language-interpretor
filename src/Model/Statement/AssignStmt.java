@@ -9,7 +9,6 @@ public class AssignStmt implements IStmt {
     private String id;
     private Expr expression;
 
-    //override toString
     public PrgState execute(PrgState state){
         MyIStack<IStmt> stack = state.getStack();
         MyIDictionary<String, Integer> symTable = state.getSymTable();
@@ -18,5 +17,10 @@ public class AssignStmt implements IStmt {
 //        else symTable.add(id, val);
         symTable.put(id, val);
         return state;
+    }
+
+    @Override
+    public String toString() {
+        return id + " = " + expression.toString();
     }
 }

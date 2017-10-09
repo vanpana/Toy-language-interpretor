@@ -38,4 +38,9 @@ public class MyList<T> implements MyIList<T> {
     public ArrayList<T> getItems() {
         return list;
     }
+
+    @Override
+    public String toString() {
+        return list.toString();
+    }
 }

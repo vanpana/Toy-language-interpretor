@@ -6,5 +6,10 @@ public class VarExpr extends Expr {
     private String id;
 
     @Override
-    int eval(MyIDictionary<String, Integer> symTable) { return symTable.get(id); }
+    public int eval(MyIDictionary<String, Integer> symTable) { return symTable.get(id); }
+
+    @Override
+    public String toString() {
+        return this.id;
+    }
 }

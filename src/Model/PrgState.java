@@ -41,4 +41,13 @@ public class PrgState {
     //TODO: setters for PrgState
 
     //TODO: override PrgState toString
+
+    @Override
+    public String toString() {
+        return "==============PrgState==============" +
+                "\n==============exeStack==============\n" + exeStack +
+                "\n==============symTable==============\n" + symTable +
+                "\n==============out==============\n" + out +
+                '\n';
+    }
 }

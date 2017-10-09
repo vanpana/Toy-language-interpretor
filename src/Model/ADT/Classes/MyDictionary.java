@@ -58,4 +58,9 @@ public class MyDictionary<K, V> implements MyIDictionary<K,V> {
     public HashMap<K, V> getItems() {
         return dict;
     }
+
+    @Override
+    public String toString() {
+        return dict.toString();
+    }
 }

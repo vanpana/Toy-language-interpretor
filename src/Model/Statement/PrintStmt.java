@@ -6,9 +6,15 @@ import Model.PrgState;
 public class PrintStmt implements IStmt {
     private Expr expression;
 
-    //override toString
+    public PrintStmt(Expr expr){ expression = expr; }
+
     public PrgState execute(PrgState state){
-        //Todo Print something
+        state.getOut().add(expression.eval(state.getSymTable()));
         return state;
+    }
+
+    @Override
+    public String toString() {
+        return "print(" + expression.toString() + ")";
     }
 }

@@ -13,5 +13,5 @@ public interface MyIDictionary<K, V> {
     boolean isDefined(K key);
     MyIDictionary<K, V> clone();
     HashMap<K, V> getItems();
-    //override toString
+    String toString();
 }

@@ -6,5 +6,10 @@ public class ConstExpr extends Expr {
     private int number;
 
     @Override
-    int eval(MyIDictionary<String, Integer> symTable){ return number; }
+    public int eval(MyIDictionary<String, Integer> symTable){ return number; }
+
+    @Override
+    public String toString() {
+        return Integer.toString(this.number);
+    }
 }

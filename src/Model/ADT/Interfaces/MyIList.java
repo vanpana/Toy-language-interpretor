@@ -9,5 +9,5 @@ public interface MyIList<T> {
     T remove(int index);
     int size();
     ArrayList<T> getItems();
-    //override toString
+    String toString();
 }
