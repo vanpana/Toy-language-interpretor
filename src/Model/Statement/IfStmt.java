@@ -9,7 +9,7 @@ public class IfStmt implements IStmt{
     private IStmt thenS;
     private IStmt elseS;
 
-    IfStmt(Expr e, IStmt then, IStmt els){
+    public IfStmt(Expr e, IStmt then, IStmt els){
         expression = e;
         thenS = then;
         elseS = els;

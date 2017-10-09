@@ -9,6 +9,11 @@ public class AssignStmt implements IStmt {
     private String id;
     private Expr expression;
 
+    public AssignStmt(String id, Expr expression) {
+        this.id = id;
+        this.expression = expression;
+    }
+
     public PrgState execute(PrgState state){
         MyIStack<IStmt> stack = state.getStack();
         MyIDictionary<String, Integer> symTable = state.getSymTable();

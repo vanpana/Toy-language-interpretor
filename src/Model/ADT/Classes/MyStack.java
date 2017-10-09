@@ -20,6 +20,11 @@ public class MyStack<T> implements MyIStack<T> {
     }
 
     @Override
+    public boolean isEmpty() {
+        return stack.isEmpty();
+    }
+
+    @Override
     public String toString() {
         return stack.toString();
     }

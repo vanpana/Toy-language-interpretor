@@ -8,6 +8,11 @@ public class ArithExpr extends Expr{
     private Expr e1, e2;
     private Operation operation;
 
+    public ArithExpr(Expr e1, Expr e2, Operation operation) {
+        this.e1 = e1;
+        this.e2 = e2;
+        this.operation = operation;
+    }
 
     @Override
     public int eval(MyIDictionary<String, Integer> symTable){
