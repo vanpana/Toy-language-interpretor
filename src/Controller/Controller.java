@@ -31,7 +31,7 @@ public class Controller {
         while(!prg.getStack().isEmpty()){
             try{
                 prg = oneStep(prg);
-                //System.out.print(prg.toString());
+                System.out.print(prg.toString());
                 //display program state eventually
             }
             catch (MyStmtExecException e){

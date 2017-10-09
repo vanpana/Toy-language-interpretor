@@ -18,4 +18,9 @@ public class CompStmt implements IStmt{
         stack.push(first);
         return state;
     }
+
+    @Override
+    public String toString() {
+        return first.toString() + "; " + second.toString();
+    }
 }
