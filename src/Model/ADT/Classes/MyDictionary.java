@@ -35,6 +35,11 @@ public class MyDictionary<K, V> implements MyIDictionary<K,V> {
     }
 
     @Override
+    public boolean isDefined(K key) {
+        return dict.get(key) != null;
+    }
+
+    @Override
     public void remove(K key) {
         dict.remove(key);
     }

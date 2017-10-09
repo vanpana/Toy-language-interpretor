@@ -10,6 +10,7 @@ public interface MyIDictionary<K, V> {
     List<V> values();
     List<K> keys();
     void remove(K key);
+    boolean isDefined(K key);
     MyIDictionary<K, V> clone();
     HashMap<K, V> getItems();
     //override toString

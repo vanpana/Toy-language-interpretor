@@ -1,11 +1,14 @@
 package Model.Statement;
 
+import Model.Expression.Expr;
+import Model.PrgState;
+
 public class PrintStmt implements IStmt {
-    Expr expression;
+    private Expr expression;
 
     //override toString
-    PrgState execute(PrgState state){
-        //do something
+    public PrgState execute(PrgState state){
+        //Todo Print something
         return state;
     }
 }

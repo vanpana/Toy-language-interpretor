@@ -1,5 +1,7 @@
 package Model.Expression;
 
+import Model.ADT.Interfaces.MyIDictionary;
+
 enum Operation {PLUS, MINUS, TIMES, DIVIDED}
 
 public class ArithExpr extends Expr{
@@ -13,5 +15,6 @@ public class ArithExpr extends Expr{
         else if (operation == Operation.MINUS) return e1.eval(symTable) - e2.eval(symTable);
         else if (operation == Operation.TIMES) return e1.eval(symTable) * e2.eval(symTable);
         else if (operation == Operation.DIVIDED) return e1.eval(symTable) / e2.eval(symTable);
+        return -1;
     }
 }

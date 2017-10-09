@@ -1,20 +1,23 @@
 package Model.Statement;
 
+import Model.Expression.Expr;
+import Model.PrgState;
+
 public class IfStmt implements IStmt{
-    Expr expression;
-    IStmt thenS;
-    IStmt elseS;
+    private Expr expression;
+    private IStmt thenS;
+    private IStmt elseS;
 
     IfStmt(Expr e, IStmt then, IStmt els){
-        expr = e;
+        expression = e;
         thenS = then;
         elseS = els;
     }
 
     //override toString
 
-    PrgState execute(PrgState state){
-        //execute
+    public PrgState execute(PrgState state){
+        //TODO: execute If Statement
         return state;
     }
 }
