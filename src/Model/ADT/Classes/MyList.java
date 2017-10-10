@@ -1,6 +1,7 @@
 package Model.ADT.Classes;
 
 import Model.ADT.Interfaces.MyIList;
+import Model.Exceptions.ADTEmptyException;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -16,17 +17,20 @@ public class MyList<T> implements MyIList<T> {
     }
 
     @Override
-    public T get(int index) {
+    public T get(int index) throws ADTEmptyException {
+        if (list.isEmpty()) throw new ADTEmptyException("List is empty");
         return list.get(index);
     }
 
     @Override
-    public void remove(T el) {
+    public void remove(T el) throws ADTEmptyException {
+        if (list.isEmpty()) throw new ADTEmptyException("List is empty");
         list.remove(el);
     }
 
     @Override
-    public T remove(int index) {
+    public T remove(int index) throws ADTEmptyException {
+        if (list.isEmpty()) throw new ADTEmptyException("List is empty");
         return list.remove(index);
     }
 

@@ -1,6 +1,7 @@
 package Model.ADT.Classes;
 
 import Model.ADT.Interfaces.MyIStack;
+import Model.Exceptions.ADTEmptyException;
 
 import java.lang.reflect.Array;
 import java.util.ArrayDeque;
@@ -11,7 +12,8 @@ public class MyStack<T> implements MyIStack<T> {
 
     public MyStack(ArrayDeque<T> stk) { stack = stk; }
     @Override
-    public T pop() {
+    public T pop() throws ADTEmptyException {
+        if (stack.isEmpty()) throw new ADTEmptyException("List is empty");
         return stack.pop();
     }
 
