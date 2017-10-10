@@ -18,20 +18,21 @@ public class Console {
     }
 
     private void printMenu(){
-        System.out.println("=========Toy Language Interpretor=========");
+        System.out.println("\n=========Toy Language Interpretor=========");
         for (int i = 0; i < statements.size(); i++){
             System.out.println(String.format("%d: %s", i, statements.get(i).toString()));
         }
+        System.out.println("-1: Exit.");
     }
 
     void loop(){
-
+        Scanner scan = new Scanner(System.in);
         while (true){
-            Scanner scan = new Scanner(System.in);
             printMenu();
             System.out.print("Choose: ");
             int option = -1;
             if (scan.hasNextInt())  option = scan.nextInt();
+            if (option == -1) break;
             if (option < statements.size()) {
                 ctrl.setMain(new PrgState(statements.get(option)));
                 try{
@@ -42,8 +43,8 @@ public class Console {
                     System.out.println(e.getMessage());
                 }
             }
-            scan.close();
         }
+        scan.close();
     }
 
     public void runApp() { loop(); }
