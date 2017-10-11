@@ -1,6 +1,7 @@
 package Model.Statement;
 
 import Model.ADT.Interfaces.MyIList;
+import Model.Exceptions.ExpressionException;
 import Model.Expression.Expr;
 import Model.PrgState;
 
@@ -9,8 +10,11 @@ public class PrintStmt implements IStmt {
 
     public PrintStmt(Expr expr){ expression = expr; }
 
-    public PrgState execute(PrgState state){
-        state.setOut(expression.eval(state.getSymTable()));
+    public PrgState execute(PrgState state) throws ExpressionException{
+        try {
+            state.setOut(expression.eval(state.getSymTable()));
+        }
+        catch (ExpressionException e) { throw new ExpressionException(e.getMessage()); }
         return state;
     }
 

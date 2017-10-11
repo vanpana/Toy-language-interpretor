@@ -1,6 +1,7 @@
 package Model.Expression;
 
 import Model.ADT.Interfaces.MyIDictionary;
+import Model.Exceptions.DivisionByZero;
 
 
 public class ArithExpr extends Expr{
@@ -14,11 +15,17 @@ public class ArithExpr extends Expr{
     }
 
     @Override
-    public int eval(MyIDictionary<String, Integer> symTable){
-        if (operation == Operation.PLUS) return e1.eval(symTable) + e2.eval(symTable);
-        else if (operation == Operation.MINUS) return e1.eval(symTable) - e2.eval(symTable);
-        else if (operation == Operation.MULTIPLY) return e1.eval(symTable) * e2.eval(symTable);
-        else if (operation == Operation.DIVIDE) return e1.eval(symTable) / e2.eval(symTable);
+    public int eval(MyIDictionary<String, Integer> symTable) throws DivisionByZero {
+        int eval1 = e1.eval(symTable), eval2 = e2.eval(symTable);
+
+        if (operation == Operation.PLUS) return eval1 + eval2;
+        else if (operation == Operation.MINUS) return eval1 - eval2;
+        else if (operation == Operation.MULTIPLY) return eval1 * eval2;
+        else if (operation == Operation.DIVIDE)
+        {
+            if (eval2 == 0) throw new DivisionByZero("Can't divide by zero.");
+            return e1.eval(symTable) / e2.eval(symTable);
+        }
         return -1;
     }
 
