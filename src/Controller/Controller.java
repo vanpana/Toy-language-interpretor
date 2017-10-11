@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.ADT.Interfaces.MyIStack;
+import Model.Exceptions.ADTEmptyException;
+import Model.Exceptions.ExpressionException;
 import Model.Exceptions.MyStmtExecException;
 import Model.PrgState;
 import Model.Statement.IStmt;
@@ -18,14 +20,23 @@ public class Controller {
         repo.getCurrentProgram().add(state);
     }
 
-    private PrgState oneStep(PrgState state) throws MyStmtExecException {
+    private PrgState oneStep(PrgState state) throws ExpressionException, ADTEmptyException {
         MyIStack<IStmt> stack = state.getStack();
-        if (stack.isEmpty()) throw new MyStmtExecException("Stack is empty!");
-        IStmt currentStatement = stack.pop();
-        return currentStatement.execute(state);
+        IStmt currentStatement = null;
+        try{
+            currentStatement = stack.pop();
+            return currentStatement.execute(state);
+        }
+        catch (ADTEmptyException e){
+            throw new ADTEmptyException(e.getMessage());
+        }
+        catch (ExpressionException e){
+            throw new ExpressionException(e.getMessage());
+        }
+
     }
 
-    public void allSteps() throws MyStmtExecException{
+    public void allSteps() throws ExpressionException, ADTEmptyException{
         // getting just the first program
         PrgState prg = repo.getCurrentProgram().get(0);
         while(!prg.getStack().isEmpty()){
@@ -34,8 +45,11 @@ public class Controller {
                 //System.out.print(prg.toString());
                 //display program state eventually
             }
-            catch (MyStmtExecException e){
-                throw new MyStmtExecException(e.getMessage());
+            catch (ADTEmptyException e){
+                throw new ADTEmptyException(e.getMessage());
+            }
+            catch (ExpressionException e){
+                throw new ExpressionException(e.getMessage());
             }
         }
         System.out.print(prg.getOut());

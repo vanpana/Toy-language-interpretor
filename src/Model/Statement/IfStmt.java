@@ -1,6 +1,7 @@
 package Model.Statement;
 
 import Model.ADT.Interfaces.MyIStack;
+import Model.Exceptions.ADTEmptyException;
 import Model.Exceptions.ExpressionException;
 import Model.Expression.Expr;
 import Model.PrgState;
@@ -16,15 +17,17 @@ public class IfStmt implements IStmt{
         elseS = els;
     }
 
-    public PrgState execute(PrgState state) throws ExpressionException{
+    public PrgState execute(PrgState state) throws ExpressionException, ADTEmptyException{
         MyIStack<IStmt> stack = state.getStack();
         int val = 0;
         try {
             val = expression.eval(state.getSymTable());
         }
-        catch (ExpressionException e)
-        {
+        catch (ExpressionException e){
             throw new ExpressionException(e.getMessage());
+        }
+        catch (ADTEmptyException e){
+            throw new ADTEmptyException(e.getMessage());
         }
 
         if (val != 0) stack.push(thenS);

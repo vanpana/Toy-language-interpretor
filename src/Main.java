@@ -6,17 +6,14 @@ import Model.Expression.ConstExpr;
 import Model.Expression.Operation;
 import Model.Expression.VarExpr;
 import Model.PrgState;
-import Model.Statement.AssignStmt;
-import Model.Statement.CompStmt;
-import Model.Statement.IStmt;
-import Model.Statement.PrintStmt;
+import Model.Statement.*;
 import Repository.IRepository;
 import Repository.Repository;
 import View.Console;
 
 import java.util.ArrayList;
 
-public class main {
+public class Main {
     private static MyList<IStmt> getStatements()
     {
         IStmt ex1 = new CompStmt(new AssignStmt("v", new ConstExpr(2)),
@@ -27,9 +24,14 @@ public class main {
                 new CompStmt(new AssignStmt("b", new ArithExpr(Operation.PLUS, new VarExpr("a"), new
                         ConstExpr(1))), new PrintStmt(new VarExpr("b"))));
 
+        IStmt ex3 = new CompStmt(new AssignStmt("a", new ArithExpr(Operation.MINUS,new ConstExpr(2), new ConstExpr(2))),
+                new CompStmt(new IfStmt(new VarExpr("a"),new AssignStmt("v",new ConstExpr(2)),
+                        new AssignStmt("v", new ConstExpr(3))), new PrintStmt(new VarExpr("v"))));
+
         MyList<IStmt> stmtlst = new MyList<>(new ArrayList<>());
         stmtlst.add(ex1);
         stmtlst.add(ex2);
+        stmtlst.add(ex3);
 
         return stmtlst;
     }
@@ -42,13 +44,5 @@ public class main {
         Console console = new Console(ctrl, getStatements());
 
         console.runApp();
-//        try
-//        {
-//            ctrl.allSteps();
-//        }
-//        catch (MyStmtExecException e)
-//        {
-//            System.out.println(e.getMessage());
-//        }
     }
 }

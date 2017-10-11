@@ -2,6 +2,7 @@ package Model.Statement;
 
 import Model.ADT.Interfaces.MyIDictionary;
 import Model.ADT.Interfaces.MyIStack;
+import Model.Exceptions.ADTEmptyException;
 import Model.Exceptions.ExpressionException;
 import Model.Expression.Expr;
 import Model.PrgState;
@@ -22,7 +23,7 @@ public class AssignStmt implements IStmt {
         try {
             val = expression.eval(symTable);
         }
-        catch (ExpressionException e)
+        catch (ADTEmptyException e)
         {
             throw new ExpressionException(e.getMessage());
         }
