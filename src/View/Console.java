@@ -44,32 +44,32 @@ public class Console {
 
     private void loop(){
         Scanner scan = new Scanner(System.in);
+
         while (true){
             printMenu();
             System.out.print("Choose: ");
             int option = -1;
             try {
                 option = getInteger(scan);
+                if (option == -1) break;
+                if (option < statements.size()) {
+                    try{
+                        ctrl.setMain(new PrgState(statements.get(option)));
+                        ctrl.allSteps();
+                    }
+                    catch (ADTEmptyException|ExpressionException e) {
+                        System.err.println(e.getMessage());
+                    }
+
+                }
+                else System.out.println("Option not available... YET.");
             }
             catch (BadInputException e){
                 System.out.println(e.getMessage());
             }
-
-            if (option == -1) break;
-            if (option < statements.size()) {
-                try{
-                    ctrl.setMain(new PrgState(statements.get(option)));
-                    ctrl.allSteps();
-                }
-                catch (ADTEmptyException|ExpressionException e) {
-                    System.err.println(e.getMessage());
-                }
-
-            }
-            else System.out.println("Option not available... YET.");
         }
-        scan.close();
 
+        scan.close();
     }
 
     public void runApp() { loop(); }
