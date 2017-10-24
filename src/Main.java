@@ -11,11 +11,27 @@ import Repository.IRepository;
 import Repository.Repository;
 import View.Console;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
-    private static MyList<IStmt> getStatements()
-    {
+    private static String getString(String message) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print(message + " ");
+        String str = scan.nextLine();
+
+        //skip to next line
+        scan.nextLine();
+
+        scan.close();
+
+        return str;
+        //TODO: strange error
+    }
+
+    private static MyList<IStmt> getStatements() {
         IStmt ex1 = new CompStmt(new AssignStmt("v", new ConstExpr(2)),
                 new PrintStmt(new VarExpr("v")));
 
@@ -37,9 +53,7 @@ public class Main {
     }
 
     public static void main(String[] args){
-        System.out.println("Hello World!");
-
-        IRepository repo = new Repository();
+        IRepository repo = new Repository("log.txt");
         Controller ctrl = new Controller(repo);
         Console console = new Console(ctrl, getStatements());
 
