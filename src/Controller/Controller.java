@@ -9,20 +9,19 @@ import Model.Statement.IStmt;
 import Repository.IRepository;
 
 public class Controller {
-    IRepository repo;
+    private IRepository repo;
 
     public Controller(IRepository repo) {
         this.repo = repo;
     }
 
     public void setMain(PrgState state){
-        repo.getCurrentProgram().clear();
-        repo.getCurrentProgram().add(state);
+        repo.setCurrentProgram(state);
     }
 
     private PrgState oneStep(PrgState state) throws ExpressionException, ADTEmptyException {
         MyIStack<IStmt> stack = state.getStack();
-        IStmt currentStatement = null;
+        IStmt currentStatement;
         try{
             currentStatement = stack.pop();
             return currentStatement.execute(state);
@@ -38,10 +37,11 @@ public class Controller {
 
     public void allSteps() throws ExpressionException, ADTEmptyException{
         // getting just the first program
-        PrgState prg = repo.getCurrentProgram().get(0);
+        PrgState prg = repo.getCurrentProgram();
         while(!prg.getStack().isEmpty()){
             try{
                 prg = oneStep(prg);
+                repo.logPrgStateExec();
                 //System.out.print(prg.toString());
                 //display program state eventually
             }
