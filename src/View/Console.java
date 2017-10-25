@@ -22,14 +22,12 @@ public class Console {
 
     private void printMenu(){
         System.out.println("\n=========Toy Language Interpretor=========");
-        for (int i = 0; i < statements.size(); i++){
+        for (int i = 0; i < statements.size(); i++)
             try {
                 System.out.println(String.format("%d: %s", i, statements.get(i).toString()));
-            }
-            catch (ADTEmptyException e){
+            } catch (ADTEmptyException e) {
                 System.out.println("No statements inserted!");
             }
-        }
         System.out.println("-1: Exit.");
     }
 
