@@ -1,6 +1,6 @@
 package Model.Exceptions;
 
-public class MyStmtExecException extends Exception{
+public class MyStmtExecException extends ToyException {
     public MyStmtExecException(String message) {
         super(message);
     }

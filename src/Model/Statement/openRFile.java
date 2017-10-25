@@ -22,9 +22,10 @@ public class openRFile implements IStmt{
     @Override
     public PrgState execute(PrgState state) throws ExpressionException, ADTEmptyException {
         //TODO: Really implement exceptions...
-        for(MyFileReader mfr : state.getFileTable().values())
-            if (filename.equals(mfr.toString()))
-                throw new ExpressionException("File already open.");
+        if (state.getFileTable().values().size() > 0)
+            for(MyFileReader mfr : state.getFileTable().values())
+                if (filename.equals(mfr.toString()))
+                    throw new ExpressionException("File already open.");
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filename));

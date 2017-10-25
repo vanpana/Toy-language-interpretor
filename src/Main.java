@@ -44,10 +44,31 @@ public class Main {
                 new CompStmt(new IfStmt(new VarExpr("a"),new AssignStmt("v",new ConstExpr(2)),
                         new AssignStmt("v", new ConstExpr(3))), new PrintStmt(new VarExpr("v"))));
 
+
+        IStmt ex4 = new CompStmt(
+                new openRFile("var_f", "test.in"),
+                new CompStmt(
+                    new CompStmt(
+                            new readFile(new VarExpr("var_f"), "var_c"),
+                            new PrintStmt(new VarExpr("var_c"))),
+                    new CompStmt(
+                            new IfStmt(new VarExpr("var_c"),
+                                    new CompStmt( //then
+                                            new readFile(new VarExpr("var_f"), "var_c"),
+                                            new PrintStmt(new VarExpr("var_c"))),
+                                    new PrintStmt(new ConstExpr(1)) //else
+                                    ),
+                            new closeRFile(new VarExpr("var_f"))
+                    )
+
+        )
+        );
+
         MyList<IStmt> stmtlst = new MyList<>(new ArrayList<>());
         stmtlst.add(ex1);
         stmtlst.add(ex2);
         stmtlst.add(ex3);
+        stmtlst.add(ex4);
 
         return stmtlst;
     }

@@ -25,6 +25,7 @@ public class PrgState {
         exeStack = new MyStack<>(new ArrayDeque<>());
         symTable = new MyDictionary<>(new HashMap<>());
         out = new MyList<>(new ArrayList<>());
+        fileTable = new MyDictionary<>(new HashMap<>());
         originalProgram = program;
         exeStack.push(program);
     }

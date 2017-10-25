@@ -2,10 +2,7 @@ package View;
 
 import Controller.*;
 import Model.ADT.Classes.MyList;
-import Model.Exceptions.ADTEmptyException;
-import Model.Exceptions.BadInputException;
-import Model.Exceptions.ExpressionException;
-import Model.Exceptions.MyStmtExecException;
+import Model.Exceptions.*;
 import Model.PrgState;
 import Model.Statement.IStmt;
 
@@ -55,7 +52,7 @@ public class Console {
                         ctrl.setMain(new PrgState(statements.get(option)));
                         ctrl.allSteps();
                     }
-                    catch (ADTEmptyException|ExpressionException e) {
+                    catch (ToyException e) {
                         System.err.println(e.getMessage());
                     }
 

@@ -3,6 +3,7 @@ package Model.Statement;
 import Model.ADT.Interfaces.MyIList;
 import Model.Exceptions.ADTEmptyException;
 import Model.Exceptions.ExpressionException;
+import Model.Exceptions.ToyException;
 import Model.Expression.Expr;
 import Model.PrgState;
 
@@ -11,12 +12,11 @@ public class PrintStmt implements IStmt {
 
     public PrintStmt(Expr expr){ expression = expr; }
 
-    public PrgState execute(PrgState state) throws ExpressionException, ADTEmptyException{
+    public PrgState execute(PrgState state) throws ToyException{
         try {
             state.setOut(expression.eval(state.getSymTable()));
         }
-        catch (ADTEmptyException e) { throw new ADTEmptyException(e.getMessage()); }
-        catch (ExpressionException e) { throw new ExpressionException(e.getMessage()); }
+        catch (ToyException e) { throw new ToyException(e.getMessage()); }
         return state;
     }
 
