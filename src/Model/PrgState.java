@@ -63,6 +63,7 @@ public class PrgState {
                 "\n==============exeStack==============\n" + exeStack +
                 "\n==============symTable==============\n" + symTable +
                 "\n==============out==============\n" + out +
+                "\n==============FileTable==============\n" + fileTable +
                 '\n';
     }
 }

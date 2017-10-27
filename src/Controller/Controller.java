@@ -39,12 +39,11 @@ public class Controller {
             try {
                 prg = oneStep(prg);
                 repo.logPrgStateExec();
-                //System.out.print(prg.toString());
+                System.out.print(prg.toString());
                 //display program state eventually
             } catch (ToyException e) {
                 throw new ToyException(e.getMessage());
             }
-            System.out.print(prg.getOut());
         }
     }
 }

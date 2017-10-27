@@ -3,6 +3,8 @@ package Model.Statement;
 import Model.ADT.Classes.MyFileReader;
 import Model.Exceptions.ADTEmptyException;
 import Model.Exceptions.ExpressionException;
+import Model.Exceptions.FileException;
+import Model.Exceptions.ToyException;
 import Model.PrgState;
 
 import java.io.BufferedReader;
@@ -20,8 +22,7 @@ public class openRFile implements IStmt{
     }
 
     @Override
-    public PrgState execute(PrgState state) throws ExpressionException, ADTEmptyException {
-        //TODO: Really implement exceptions...
+    public PrgState execute(PrgState state) throws ToyException {
         if (state.getFileTable().values().size() > 0)
             for(MyFileReader mfr : state.getFileTable().values())
                 if (filename.equals(mfr.toString()))
@@ -35,7 +36,7 @@ public class openRFile implements IStmt{
         }
         catch (IOException ioe)
         {
-            throw new ExpressionException("File not found.");
+            throw new FileException("File not found.");
         }
 
     }
