@@ -10,7 +10,7 @@ public class ConstExpr extends Expr {
     }
 
     @Override
-    public int eval(MyIDictionary<String, Integer> symTable){ return number; }
+    public int eval(MyIDictionary<String, Integer> symTable, MyIDictionary<Integer, Integer> heap){ return number; }
 
     @Override
     public String toString() {

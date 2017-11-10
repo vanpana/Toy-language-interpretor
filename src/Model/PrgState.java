@@ -19,6 +19,7 @@ public class PrgState {
     private MyIDictionary<String, Integer> symTable;
     private MyIList<Integer> out;
     private MyIDictionary<Integer, MyFileReader> fileTable;
+    private MyIDictionary<Integer, Integer> heap;
     private IStmt originalProgram;
 
     public PrgState(IStmt program){
@@ -49,6 +50,9 @@ public class PrgState {
         return originalProgram;
     }
 
+    public MyIDictionary<Integer, Integer> getHeap() {
+        return heap;
+    }
 
     //TODO: setters for PrgState
 

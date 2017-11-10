@@ -12,7 +12,7 @@ public class VarExpr extends Expr {
     }
 
     @Override
-    public int eval(MyIDictionary<String, Integer> symTable) throws ADTEmptyException {
+    public int eval(MyIDictionary<String, Integer> symTable, MyIDictionary<Integer, Integer> heap) throws ADTEmptyException {
         try{
             return symTable.get(id);
         }

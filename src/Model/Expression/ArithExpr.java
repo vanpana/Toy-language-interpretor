@@ -16,8 +16,8 @@ public class ArithExpr extends Expr{
     }
 
     @Override
-    public int eval(MyIDictionary<String, Integer> symTable) throws ADTEmptyException, DivisionByZero {
-        int eval1 = e1.eval(symTable), eval2 = e2.eval(symTable);
+    public int eval(MyIDictionary<String, Integer> symTable, MyIDictionary<Integer, Integer> heap) throws ADTEmptyException, DivisionByZero {
+        int eval1 = e1.eval(symTable, heap), eval2 = e2.eval(symTable, heap);
 
         if (operation == Operation.PLUS) return eval1 + eval2;
         else if (operation == Operation.MINUS) return eval1 - eval2;
