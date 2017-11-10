@@ -2,10 +2,7 @@ package View;
 
 import Controller.*;
 import Model.ADT.Classes.MyList;
-import Model.Exceptions.ADTEmptyException;
-import Model.Exceptions.BadInputException;
-import Model.Exceptions.ExpressionException;
-import Model.Exceptions.MyStmtExecException;
+import Model.Exceptions.*;
 import Model.PrgState;
 import Model.Statement.IStmt;
 
@@ -22,14 +19,12 @@ public class Console {
 
     private void printMenu(){
         System.out.println("\n=========Toy Language Interpretor=========");
-        for (int i = 0; i < statements.size(); i++){
+        for (int i = 0; i < statements.size(); i++)
             try {
                 System.out.println(String.format("%d: %s", i, statements.get(i).toString()));
-            }
-            catch (ADTEmptyException e){
+            } catch (ADTEmptyException e) {
                 System.out.println("No statements inserted!");
             }
-        }
         System.out.println("-1: Exit.");
     }
 
@@ -57,7 +52,7 @@ public class Console {
                         ctrl.setMain(new PrgState(statements.get(option)));
                         ctrl.allSteps();
                     }
-                    catch (ADTEmptyException|ExpressionException e) {
+                    catch (ToyException e) {
                         System.err.println(e.getMessage());
                     }
 

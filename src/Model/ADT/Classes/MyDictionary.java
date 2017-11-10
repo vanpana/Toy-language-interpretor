@@ -27,7 +27,7 @@ public class MyDictionary<K, V> implements MyIDictionary<K,V> {
 
     @Override
     public List<V> values() throws ADTEmptyException {
-        if (dict.isEmpty()) throw new ADTEmptyException("Dict is empty");
+        //TODO: if (dict.isEmpty()) throw new ADTEmptyException("Dict is empty");
         return new ArrayList<>(dict.values());
     }
 

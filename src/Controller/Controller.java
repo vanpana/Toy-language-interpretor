@@ -4,6 +4,7 @@ import Model.ADT.Interfaces.MyIStack;
 import Model.Exceptions.ADTEmptyException;
 import Model.Exceptions.ExpressionException;
 import Model.Exceptions.MyStmtExecException;
+import Model.Exceptions.ToyException;
 import Model.PrgState;
 import Model.Statement.IStmt;
 import Repository.IRepository;
@@ -15,43 +16,35 @@ public class Controller {
         this.repo = repo;
     }
 
-    public void setMain(PrgState state){
+    public void setMain(PrgState state) {
         repo.setCurrentProgram(state);
     }
 
-    private PrgState oneStep(PrgState state) throws ExpressionException, ADTEmptyException {
+    private PrgState oneStep(PrgState state) throws ToyException {
         MyIStack<IStmt> stack = state.getStack();
         IStmt currentStatement;
-        try{
+        try {
             currentStatement = stack.pop();
             return currentStatement.execute(state);
-        }
-        catch (ADTEmptyException e){
-            throw new ADTEmptyException(e.getMessage());
-        }
-        catch (ExpressionException e){
-            throw new ExpressionException(e.getMessage());
+        } catch (ToyException e) {
+            throw e;
         }
 
     }
 
-    public void allSteps() throws ExpressionException, ADTEmptyException{
+    public void allSteps() throws ToyException {
         // getting just the first program
         PrgState prg = repo.getCurrentProgram();
-        while(!prg.getStack().isEmpty()){
-            try{
+        while (!prg.getStack().isEmpty()) {
+            try {
                 prg = oneStep(prg);
                 repo.logPrgStateExec();
-                //System.out.print(prg.toString());
+                System.out.print(prg.toString());
                 //display program state eventually
-            }
-            catch (ADTEmptyException e){
-                throw new ADTEmptyException(e.getMessage());
-            }
-            catch (ExpressionException e){
-                throw new ExpressionException(e.getMessage());
+            } catch (ToyException e) {
+                throw new ToyException(e.getMessage());
             }
         }
-        System.out.print(prg.getOut());
     }
 }
+

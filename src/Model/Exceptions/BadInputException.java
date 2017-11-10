@@ -1,6 +1,6 @@
 package Model.Exceptions;
 
-public class BadInputException extends Exception{
+public class BadInputException extends ToyException {
     public BadInputException(String message) {
         super(message);
     }

@@ -1,6 +1,6 @@
 ==============PrgState==============
 ==============exeStack==============
-[a = 2 + 3 * 5, b = a + 1; print(b)]
+[openRFile( var_f, test.in), readFile(var_f, var_c); print(var_c); if(var_c) then readFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
 ==============symTable==============
 {}
 ==============out==============
@@ -8,33 +8,209 @@
 
 ==============PrgState==============
 ==============exeStack==============
-[b = a + 1; print(b)]
+[readFile(var_f, var_c); print(var_c); if(var_c) then readFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
 ==============symTable==============
-{a=17}
+{var_f=3}
 ==============out==============
 []
 
 ==============PrgState==============
 ==============exeStack==============
-[b = a + 1, print(b)]
+[readFile(var_f, var_c); print(var_c), if(var_c) then readFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
 ==============symTable==============
-{a=17}
+{var_f=3}
 ==============out==============
 []
 
 ==============PrgState==============
 ==============exeStack==============
-[print(b)]
+[readFile(var_f, var_c), print(var_c), if(var_c) then readFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
 ==============symTable==============
-{a=17, b=18}
+{var_f=3}
 ==============out==============
 []
 
 ==============PrgState==============
 ==============exeStack==============
+[print(var_c), if(var_c) then readFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============out==============
+[]
+
+==============PrgState==============
+==============exeStack==============
+[if(var_c) then readFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============out==============
+[15]
+
+==============PrgState==============
+==============exeStack==============
+[if(var_c) then readFile(var_f, var_c); print(var_c) else print(1), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============out==============
+[15]
+
+==============PrgState==============
+==============exeStack==============
+[readFile(var_f, var_c); print(var_c), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============out==============
+[15]
+
+==============PrgState==============
+==============exeStack==============
+[readFile(var_f, var_c), print(var_c), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============out==============
+[15]
+
+==============PrgState==============
+==============exeStack==============
+[print(var_c), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=50}
+==============out==============
+[15]
+
+==============PrgState==============
+==============exeStack==============
+[closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=50}
+==============out==============
+[15, 50]
+
+==============PrgState==============
+==============exeStack==============
 []
 ==============symTable==============
-{a=17, b=18}
+{var_f=3, var_c=50}
 ==============out==============
-[18]
+[15, 50]
+
+==============PrgState==============
+==============exeStack==============
+[openRFile( var_f, test.in), readFile(var_f, var_c); print(var_c); if(var_c) then readFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{}
+==============out==============
+[]
+==============FileTable==============
+{}
+
+==============PrgState==============
+==============exeStack==============
+[readFile(var_f, var_c); print(var_c); if(var_c) then readFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3}
+==============out==============
+[]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState==============
+==============exeStack==============
+[readFile(var_f, var_c); print(var_c), if(var_c) then readFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3}
+==============out==============
+[]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState==============
+==============exeStack==============
+[readFile(var_f, var_c), print(var_c), if(var_c) then readFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3}
+==============out==============
+[]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState==============
+==============exeStack==============
+[print(var_c), if(var_c) then readFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============out==============
+[]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState==============
+==============exeStack==============
+[if(var_c) then readFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState==============
+==============exeStack==============
+[if(var_c) then readFile(var_f, var_c); print(var_c) else print(1), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState==============
+==============exeStack==============
+[readFile(var_f, var_c); print(var_c), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState==============
+==============exeStack==============
+[readFile(var_f, var_c), print(var_c), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState==============
+==============exeStack==============
+[print(var_c), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=50}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState==============
+==============exeStack==============
+[closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=50}
+==============out==============
+[15, 50]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState==============
+==============exeStack==============
+[]
+==============symTable==============
+{var_f=3, var_c=50}
+==============out==============
+[15, 50]
+==============FileTable==============
+{}
 

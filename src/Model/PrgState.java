@@ -1,6 +1,7 @@
 package Model;
 
 import Model.ADT.Classes.MyDictionary;
+import Model.ADT.Classes.MyFileReader;
 import Model.ADT.Classes.MyList;
 import Model.ADT.Classes.MyStack;
 import Model.ADT.Interfaces.MyIDictionary;
@@ -17,12 +18,14 @@ public class PrgState {
     private MyIStack<IStmt> exeStack;
     private MyIDictionary<String, Integer> symTable;
     private MyIList<Integer> out;
+    private MyIDictionary<Integer, MyFileReader> fileTable;
     private IStmt originalProgram;
 
     public PrgState(IStmt program){
         exeStack = new MyStack<>(new ArrayDeque<>());
         symTable = new MyDictionary<>(new HashMap<>());
         out = new MyList<>(new ArrayList<>());
+        fileTable = new MyDictionary<>(new HashMap<>());
         originalProgram = program;
         exeStack.push(program);
     }
@@ -39,6 +42,8 @@ public class PrgState {
     public MyIList<Integer> getOut() {
         return out;
     }
+
+    public MyIDictionary<Integer, MyFileReader> getFileTable() { return fileTable; }
 
     public IStmt getOriginalProgram() {
         return originalProgram;
@@ -58,6 +63,7 @@ public class PrgState {
                 "\n==============exeStack==============\n" + exeStack +
                 "\n==============symTable==============\n" + symTable +
                 "\n==============out==============\n" + out +
+                "\n==============FileTable==============\n" + fileTable +
                 '\n';
     }
 }

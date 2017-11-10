@@ -29,6 +29,6 @@ public class MyStack<T> implements MyIStack<T> {
 
     @Override
     public String toString() {
-        return stack.toString();
+        return stack.toString(); //TODO: foreach
     }
 }

@@ -4,6 +4,7 @@ import Model.ADT.Interfaces.MyIDictionary;
 import Model.ADT.Interfaces.MyIStack;
 import Model.Exceptions.ADTEmptyException;
 import Model.Exceptions.ExpressionException;
+import Model.Exceptions.ToyException;
 import Model.Expression.Expr;
 import Model.PrgState;
 
@@ -16,16 +17,16 @@ public class AssignStmt implements IStmt {
         this.expression = expression;
     }
 
-    public PrgState execute(PrgState state) throws ExpressionException {
+    public PrgState execute(PrgState state) throws ToyException {
         MyIStack<IStmt> stack = state.getStack();
         MyIDictionary<String, Integer> symTable = state.getSymTable();
         int val = 0;
         try {
             val = expression.eval(symTable);
         }
-        catch (ADTEmptyException e)
+        catch (ToyException e)
         {
-            throw new ExpressionException(e.getMessage());
+            throw new ToyException(e.getMessage());
         }
 //        if (symTable.isDefined(id)) symTable.put(id, val);
 //        else symTable.add(id, val);
