@@ -6,17 +6,10 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Repository implements IRepository {
     private PrgState prgState;
     private String logFilePath;
-
-    public Repository() {
-        this.prgState = null;
-        logFilePath = "";
-    }
 
     public Repository(String logFilePath){
         this.prgState = null;

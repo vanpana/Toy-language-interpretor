@@ -1,27 +1,27 @@
-package Model.Expression;
+package Model.Statement;
 
-import Model.ADT.Interfaces.MyIDictionary;
 import Model.Exceptions.HeapException;
 import Model.Exceptions.ToyException;
+import Model.Expression.Expr;
+import Model.PrgState;
 
-public class HeapWritingExpr extends Expr {
+public class HeapWritingStmt implements IStmt {
     private String var_name;
     private Expr expr;
 
-    public HeapWritingExpr(String var_name, Expr expr) {
+    public HeapWritingStmt(String var_name, Expr expr) {
         this.var_name = var_name;
         this.expr = expr;
     }
 
     @Override
-    public int eval(MyIDictionary<String, Integer> symTable, MyIDictionary<Integer, Integer> heap) throws ToyException {
+    public PrgState execute(PrgState state) throws ToyException {
         try{
-            int location = symTable.get(var_name);
-            if (heap.isDefined(location))
-                heap.put(location, expr.eval(symTable, heap));
+            int location = state.getSymTable().get(var_name);
+            if (state.getHeap().isDefined(location))
+                state.getHeap().put(location, expr.eval(state.getSymTable(), state.getHeap()));
             else throw new HeapException("Value is not found!");
-
-            return 0;
+            return state;
         }
         catch (ToyException e){
             throw new HeapException(e.getMessage());

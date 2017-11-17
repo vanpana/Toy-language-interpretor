@@ -19,11 +19,11 @@ public class NewStmt implements IStmt{
         int res = this.expr.eval(state.getSymTable(), state.getHeap());
         state.getHeap().put(location, res);
         state.getSymTable().put(var_name, location++);
-        return null;
+        return state;
     }
 
     @Override
     public String toString() {
-        return "new(" + var_name + " = " + expr;
+        return "new(" + var_name + " = " + expr + ")";
     }
 }

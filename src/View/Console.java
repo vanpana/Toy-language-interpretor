@@ -43,7 +43,7 @@ public class Console {
         while (true){
             printMenu();
             System.out.print("Choose: ");
-            int option = -1;
+            int option;
             try {
                 option = getInteger(scan);
                 if (option == -1) break;

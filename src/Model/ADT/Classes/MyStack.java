@@ -2,10 +2,7 @@ package Model.ADT.Classes;
 
 import Model.ADT.Interfaces.MyIStack;
 import Model.Exceptions.ADTEmptyException;
-
-import java.lang.reflect.Array;
 import java.util.ArrayDeque;
-import java.util.Deque;
 
 public class MyStack<T> implements MyIStack<T> {
     private ArrayDeque<T> stack;

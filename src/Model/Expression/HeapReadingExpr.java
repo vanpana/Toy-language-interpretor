@@ -1,8 +1,7 @@
 package Model.Expression;
 
 import Model.ADT.Interfaces.MyIDictionary;
-import Model.Exceptions.ADTEmptyException;
-import Model.Exceptions.DivisionByZero;
+import Model.ADT.Interfaces.MyIHeap;
 import Model.Exceptions.HeapException;
 import Model.Exceptions.ToyException;
 
@@ -14,7 +13,7 @@ public class HeapReadingExpr extends Expr {
     }
 
     @Override
-    public int eval(MyIDictionary<String, Integer> symTable, MyIDictionary<Integer, Integer> heap) throws HeapException {
+    public int eval(MyIDictionary<String, Integer> symTable, MyIHeap<Integer> heap) throws HeapException {
         try{
             int location = symTable.get(var_name);
             int value;

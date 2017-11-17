@@ -1,9 +1,5 @@
 package Model.Statement;
 
-import Model.ADT.Interfaces.MyIDictionary;
-import Model.ADT.Interfaces.MyIStack;
-import Model.Exceptions.ADTEmptyException;
-import Model.Exceptions.ExpressionException;
 import Model.Exceptions.ToyException;
 import Model.Expression.Expr;
 import Model.PrgState;
@@ -18,19 +14,15 @@ public class AssignStmt implements IStmt {
     }
 
     public PrgState execute(PrgState state) throws ToyException {
-        MyIStack<IStmt> stack = state.getStack();
-        MyIDictionary<String, Integer> symTable = state.getSymTable();
-        int val = 0;
+        int val;
         try {
-            val = expression.eval(symTable);
+            val = expression.eval(state.getSymTable(), state.getHeap());
         }
         catch (ToyException e)
         {
             throw new ToyException(e.getMessage());
         }
-//        if (symTable.isDefined(id)) symTable.put(id, val);
-//        else symTable.add(id, val);
-        symTable.put(id, val);
+        state.getSymTable().put(id, val);
         return state;
     }
 
