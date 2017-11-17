@@ -1,28 +1,31 @@
 package Model.ADT.Classes;
 
-import Model.ADT.Interfaces.MyIDictionary;
+import Model.ADT.Interfaces.MyIHeap;
 import Model.Exceptions.ADTEmptyException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
-public class MyDictionary<K, V> implements MyIDictionary<K,V> {
-    private HashMap<K, V> dict;
+public class MyHeap<V> implements MyIHeap<V>{
+    private Map<Integer, V> dict;
 
-    public MyDictionary(HashMap<K, V> map) {
+    public MyHeap(HashMap<Integer, V> map) {
         dict = map;
     }
 
     @Override
-    public void put(K key, V value) {
+    public void put(Integer key, V value) {
         dict.put(key, value);
     }
 
     @Override
-    public V get(K key) throws ADTEmptyException {
+    public V get(Integer key) throws ADTEmptyException {
         if (dict.isEmpty()) throw new ADTEmptyException("Dict is empty");
         return dict.get(key);
+    }
+
+    @Override
+    public Set<Integer> keys() {
+        return dict.keySet();
     }
 
     @Override
@@ -32,34 +35,34 @@ public class MyDictionary<K, V> implements MyIDictionary<K,V> {
     }
 
     @Override
-    public boolean isDefined(K key) throws ADTEmptyException {
+    public Map<Integer, V> getItems() {
+        return dict;
+    }
+
+    @Override
+    public boolean isDefined(Integer key) throws ADTEmptyException {
         if (dict.isEmpty()) throw new ADTEmptyException("Dict is empty");
         return dict.get(key) != null;
     }
 
     @Override
-    public void setContent(HashMap<K, V> map) {
+    public void setContent(HashMap<Integer, V> map) {
         dict = map;
     }
 
     @Override
-    public void remove(K key) throws ADTEmptyException {
+    public void remove(Integer key) throws ADTEmptyException {
         if (dict.isEmpty()) throw new ADTEmptyException("Dict is empty");
         dict.remove(key);
     }
 
-//    @Override
-//    public MyIDictionary<K, V> clone() {
-//        MyIDictionary<K, V> newdict = new MyDictionary<>(new HashMap<>());
-//
-//        for (K key: dict.keySet())
-//            newdict.put(key, dict.get(key));
-//
-//        return newdict;
-//    }
+    @Override
+    public Set entrySet() {
+        return dict.entrySet();
+    }
 
     @Override
-    public HashMap<K, V> getContent() {
+    public Map<Integer, V> getContent() {
         return dict;
     }
 

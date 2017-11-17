@@ -1,36 +1,14 @@
 import Controller.Controller;
 import Model.ADT.Classes.MyList;
-import Model.Exceptions.MyStmtExecException;
-import Model.Expression.ArithExpr;
-import Model.Expression.ConstExpr;
-import Model.Expression.Operation;
-import Model.Expression.VarExpr;
-import Model.PrgState;
+import Model.Expression.*;
 import Model.Statement.*;
 import Repository.IRepository;
 import Repository.Repository;
 import View.Console;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Main {
-    private static String getString(String message) {
-        Scanner scan = new Scanner(System.in);
-
-        System.out.print(message + " ");
-        String str = scan.nextLine();
-
-        //skip to next line
-        scan.nextLine();
-
-        scan.close();
-
-        return str;
-        //TODO: strange error
-    }
-
     private static MyList<IStmt> getStatements() {
         IStmt ex1 = new CompStmt(new AssignStmt("v", new ConstExpr(2)),
                 new PrintStmt(new VarExpr("v")));
@@ -64,11 +42,34 @@ public class Main {
         )
         );
 
+//        v=10; new(v,20); new(a,22); wH(a,30); print(a); print(rH(a));a=0
+        IStmt ex5 = new CompStmt(
+                new AssignStmt("v", new ConstExpr(10)),
+                new CompStmt(
+                        new NewStmt("v", new ConstExpr(20)),
+                        new CompStmt(
+                                new NewStmt("a", new ConstExpr(22)),
+                                new CompStmt(
+                                        new HeapWritingStmt("a", new ConstExpr(30)),
+                                        new CompStmt(
+                                                new PrintStmt(new VarExpr("a")),
+                                                new CompStmt(
+                                                        new PrintStmt(new HeapReadingExpr("a")),
+                                                        new AssignStmt("a", new ConstExpr(0))
+                                                )
+                                        )
+                                )
+                        )
+                )
+        );
+
         MyList<IStmt> stmtlst = new MyList<>(new ArrayList<>());
         stmtlst.add(ex1);
         stmtlst.add(ex2);
         stmtlst.add(ex3);
         stmtlst.add(ex4);
+        stmtlst.add(ex5);
+
 
         return stmtlst;
     }

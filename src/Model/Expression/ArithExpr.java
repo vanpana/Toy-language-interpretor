@@ -1,8 +1,9 @@
 package Model.Expression;
 
 import Model.ADT.Interfaces.MyIDictionary;
-import Model.Exceptions.ADTEmptyException;
+import Model.ADT.Interfaces.MyIHeap;
 import Model.Exceptions.DivisionByZero;
+import Model.Exceptions.ToyException;
 
 
 public class ArithExpr extends Expr{
@@ -16,18 +17,24 @@ public class ArithExpr extends Expr{
     }
 
     @Override
-    public int eval(MyIDictionary<String, Integer> symTable) throws ADTEmptyException, DivisionByZero {
-        int eval1 = e1.eval(symTable), eval2 = e2.eval(symTable);
+    public int eval(MyIDictionary<String, Integer> symTable, MyIHeap<Integer> heap) throws ToyException {
+        try{
+            int eval1 = e1.eval(symTable, heap), eval2 = e2.eval(symTable, heap);
 
-        if (operation == Operation.PLUS) return eval1 + eval2;
-        else if (operation == Operation.MINUS) return eval1 - eval2;
-        else if (operation == Operation.MULTIPLY) return eval1 * eval2;
-        else if (operation == Operation.DIVIDE)
-        {
-            if (eval2 == 0) throw new DivisionByZero("Can't divide by zero.");
-            return eval1 / eval2;
+            if (operation == Operation.PLUS) return eval1 + eval2;
+            else if (operation == Operation.MINUS) return eval1 - eval2;
+            else if (operation == Operation.MULTIPLY) return eval1 * eval2;
+            else if (operation == Operation.DIVIDE)
+            {
+                if (eval2 == 0) throw new DivisionByZero("Can't divide by zero.");
+                return eval1 / eval2;
+            }
+            return -1;
         }
-        return -1;
+        catch (ToyException te){
+            throw new ToyException(te.getMessage());
+        }
+
     }
 
     @Override

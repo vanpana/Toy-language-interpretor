@@ -1,7 +1,6 @@
 package Model.Statement;
 
 import Model.ADT.Classes.MyFileReader;
-import Model.Exceptions.ADTEmptyException;
 import Model.Exceptions.ExpressionException;
 import Model.Exceptions.FileException;
 import Model.Exceptions.ToyException;

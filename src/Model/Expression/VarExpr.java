@@ -1,8 +1,8 @@
 package Model.Expression;
 
 import Model.ADT.Interfaces.MyIDictionary;
+import Model.ADT.Interfaces.MyIHeap;
 import Model.Exceptions.ADTEmptyException;
-import Model.Exceptions.ExpressionException;
 
 public class VarExpr extends Expr {
     private String id;
@@ -12,7 +12,7 @@ public class VarExpr extends Expr {
     }
 
     @Override
-    public int eval(MyIDictionary<String, Integer> symTable) throws ADTEmptyException {
+    public int eval(MyIDictionary<String, Integer> symTable, MyIHeap<Integer> heap) throws ADTEmptyException {
         try{
             return symTable.get(id);
         }

@@ -1,9 +1,6 @@
 package Model.Statement;
 
 import Model.ADT.Interfaces.MyIStack;
-import Model.Exceptions.ADTEmptyException;
-import Model.Exceptions.DivisionByZero;
-import Model.Exceptions.ExpressionException;
 import Model.Exceptions.ToyException;
 import Model.Expression.Expr;
 import Model.PrgState;
@@ -21,9 +18,9 @@ public class IfStmt implements IStmt{
 
     public PrgState execute(PrgState state) throws ToyException{
         MyIStack<IStmt> stack = state.getStack();
-        int val = 0;
+        int val;
         try {
-            val = expression.eval(state.getSymTable());
+            val = expression.eval(state.getSymTable(), state.getHeap());
         }
         catch (ToyException e){
             throw new ToyException(e.getMessage());

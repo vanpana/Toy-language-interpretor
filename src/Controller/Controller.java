@@ -1,13 +1,16 @@
 package Controller;
 
+import Model.ADT.Interfaces.MyIHeap;
 import Model.ADT.Interfaces.MyIStack;
-import Model.Exceptions.ADTEmptyException;
-import Model.Exceptions.ExpressionException;
-import Model.Exceptions.MyStmtExecException;
 import Model.Exceptions.ToyException;
 import Model.PrgState;
 import Model.Statement.IStmt;
 import Repository.IRepository;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Controller {
     private IRepository repo;
@@ -18,6 +21,12 @@ public class Controller {
 
     public void setMain(PrgState state) {
         repo.setCurrentProgram(state);
+    }
+
+    private Map<Integer,Integer> conservativeGarbageCollector(Collection<Integer> symTableValues, Map<Integer, Integer> heap){
+        return heap.entrySet().stream()
+                .filter(e->symTableValues.contains(e.getKey())).
+                        collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
     private PrgState oneStep(PrgState state) throws ToyException {
@@ -38,6 +47,10 @@ public class Controller {
         while (!prg.getStack().isEmpty()) {
             try {
                 prg = oneStep(prg);
+                prg.getHeap().setContent((HashMap<Integer, Integer>)conservativeGarbageCollector(
+                        prg.getSymTable().getContent().values(),
+                        prg.getHeap().getItems())
+                );
                 repo.logPrgStateExec();
                 System.out.print(prg.toString());
                 //display program state eventually

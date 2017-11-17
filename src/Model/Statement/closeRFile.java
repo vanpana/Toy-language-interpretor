@@ -1,8 +1,6 @@
 package Model.Statement;
 
 import Model.ADT.Classes.MyFileReader;
-import Model.Exceptions.ADTEmptyException;
-import Model.Exceptions.ExpressionException;
 import Model.Exceptions.FileException;
 import Model.Exceptions.ToyException;
 import Model.Expression.Expr;
@@ -17,7 +15,7 @@ public class closeRFile implements IStmt {
 
     @Override
     public PrgState execute(PrgState state) throws ToyException {
-        int fd = expr_file_id.eval(state.getSymTable());
+        int fd = expr_file_id.eval(state.getSymTable(), state.getHeap());
 
         MyFileReader reader = state.getFileTable().get(fd);
         if (reader == null)
