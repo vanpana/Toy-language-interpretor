@@ -2,37 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a262a5ae-cacd-41dd-a090-2f4b4398677d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Model/ADT/Classes/MyHeap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Model/ADT/Interfaces/MyIHeap.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Model/Exceptions/MyStmtExecException.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Model/Expression/HeapWritingExpr.java" afterPath="$PROJECT_DIR$/src/Model/Statement/HeapWritingStmt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Model/Expression/BoolExpr.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.txt" afterPath="$PROJECT_DIR$/log.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Controller.java" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/ADT/Classes/MyDictionary.java" afterPath="$PROJECT_DIR$/src/Model/ADT/Classes/MyDictionary.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/ADT/Classes/MyList.java" afterPath="$PROJECT_DIR$/src/Model/ADT/Classes/MyList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/ADT/Classes/MyStack.java" afterPath="$PROJECT_DIR$/src/Model/ADT/Classes/MyStack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/ADT/Interfaces/MyIDictionary.java" afterPath="$PROJECT_DIR$/src/Model/ADT/Interfaces/MyIDictionary.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/ADT/Interfaces/MyIList.java" afterPath="$PROJECT_DIR$/src/Model/ADT/Interfaces/MyIList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/ADT/Interfaces/MyIStack.java" afterPath="$PROJECT_DIR$/src/Model/ADT/Interfaces/MyIStack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Expression/ArithExpr.java" afterPath="$PROJECT_DIR$/src/Model/Expression/ArithExpr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Expression/ConstExpr.java" afterPath="$PROJECT_DIR$/src/Model/Expression/ConstExpr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Expression/Expr.java" afterPath="$PROJECT_DIR$/src/Model/Expression/Expr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Expression/HeapReadingExpr.java" afterPath="$PROJECT_DIR$/src/Model/Expression/HeapReadingExpr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Expression/VarExpr.java" afterPath="$PROJECT_DIR$/src/Model/Expression/VarExpr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/PrgState.java" afterPath="$PROJECT_DIR$/src/Model/PrgState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Statement/AssignStmt.java" afterPath="$PROJECT_DIR$/src/Model/Statement/AssignStmt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Statement/IStmt.java" afterPath="$PROJECT_DIR$/src/Model/Statement/IStmt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Statement/IfStmt.java" afterPath="$PROJECT_DIR$/src/Model/Statement/IfStmt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Statement/NewStmt.java" afterPath="$PROJECT_DIR$/src/Model/Statement/NewStmt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Statement/PrintStmt.java" afterPath="$PROJECT_DIR$/src/Model/Statement/PrintStmt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Statement/closeRFile.java" afterPath="$PROJECT_DIR$/src/Model/Statement/closeRFile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Statement/openRFile.java" afterPath="$PROJECT_DIR$/src/Model/Statement/openRFile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Statement/readFile.java" afterPath="$PROJECT_DIR$/src/Model/Statement/readFile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Repository/IRepository.java" afterPath="$PROJECT_DIR$/src/Repository/IRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Repository/Repository.java" afterPath="$PROJECT_DIR$/src/Repository/Repository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/Console.java" afterPath="$PROJECT_DIR$/src/View/Console.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,10 +19,10 @@
         <entry file="file://$PROJECT_DIR$/src/Controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="511">
-              <caret line="52" column="18" lean-forward="true" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
+              <caret line="52" column="18" lean-forward="false" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1510916068781" expanded="true" signature="1826:1945" ph="{...}" />
+                <marker date="1510916561216" expanded="true" signature="1826:1945" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -81,7 +52,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrgState.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PrgState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/PrgState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
@@ -89,6 +60,20 @@
               <folding>
                 <element signature="e#1229#1230#0" expanded="true" />
                 <element signature="e#1256#1257#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BoolExpr.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Model/Expression/BoolExpr.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-17">
+              <caret line="18" column="95" lean-forward="false" selection-start-line="18" selection-start-column="95" selection-end-line="18" selection-end-column="95" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1394#1395#0" expanded="true" />
+                <element signature="e#1453#1454#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,19 +95,7 @@
         <entry file="file://$PROJECT_DIR$/src/Model/Expression/HeapReadingExpr.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="25" lean-forward="true" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyIHeap.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/ADT/Interfaces/MyIHeap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+              <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -157,7 +130,7 @@
         <entry file="file://$PROJECT_DIR$/src/Model/Statement/IfStmt.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="177">
-              <caret line="22" column="31" lean-forward="true" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+              <caret line="22" column="31" lean-forward="false" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -204,7 +177,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Model/Expression/ArithExp.java" />
         <option value="$PROJECT_DIR$/src/Model/VarExpr.java" />
         <option value="$PROJECT_DIR$/src/Model/ADT/MyIStack.java" />
         <option value="$PROJECT_DIR$/src/Model/ADT/MyStack.java" />
@@ -246,7 +218,6 @@
         <option value="$PROJECT_DIR$/src/Model/ADT/Classes/MyList.java" />
         <option value="$PROJECT_DIR$/src/Model/ADT/Interfaces/MyIDictionary.java" />
         <option value="$PROJECT_DIR$/src/Model/ADT/Classes/MyDictionary.java" />
-        <option value="$PROJECT_DIR$/src/Model/PrgState.java" />
         <option value="$PROJECT_DIR$/src/Model/ADT/Interfaces/MyIHeap.java" />
         <option value="$PROJECT_DIR$/src/Controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/Model/ADT/Classes/MyHeap.java" />
@@ -255,6 +226,8 @@
         <option value="$PROJECT_DIR$/src/Model/Expression/ArithExpr.java" />
         <option value="$PROJECT_DIR$/src/Model/Expression/VarExpr.java" />
         <option value="$PROJECT_DIR$/src/Model/Expression/HeapReadingExpr.java" />
+        <option value="$PROJECT_DIR$/src/Model/PrgState.java" />
+        <option value="$PROJECT_DIR$/src/Model/Expression/BoolExpr.java" />
       </list>
     </option>
   </component>
@@ -302,12 +275,6 @@
               <item name="Toy-language-interpretor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Toy-language-interpretor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Toy-language-interpretor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Toy-language-interpretor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -315,35 +282,7 @@
               <item name="Toy-language-interpretor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
-              <item name="ADT" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Toy-language-interpretor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Toy-language-interpretor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
-              <item name="ADT" type="462c0819:PsiDirectoryNode" />
-              <item name="Classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Toy-language-interpretor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Toy-language-interpretor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
-              <item name="ADT" type="462c0819:PsiDirectoryNode" />
-              <item name="Interfaces" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Toy-language-interpretor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Toy-language-interpretor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Toy-language-interpretor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Toy-language-interpretor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name="Expression" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -494,12 +433,12 @@
       <workItem from="1508837994955" duration="4762000" />
       <workItem from="1508914817338" duration="6916000" />
       <workItem from="1509089152938" duration="1442000" />
-      <workItem from="1510908276784" duration="4426000" />
+      <workItem from="1510908276784" duration="5574000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47609000" />
+    <option name="totallyTimeSpent" value="48757000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -580,13 +519,6 @@
     <option name="serverIp" value="localhost" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Model/ADT/Classes/MyList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="10" column="48" lean-forward="false" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Statement/PrintStmt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -613,7 +545,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1510910256423" expanded="true" signature="3329:3474" ph="{...}" />
+            <marker date="1510916561217" expanded="true" signature="3329:3474" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -675,7 +607,7 @@
           <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1510910256423" expanded="true" signature="3329:3474" ph="{...}" />
+            <marker date="1510916561217" expanded="true" signature="3329:3474" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -701,8 +633,8 @@
         <state relative-caret-position="323">
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
-            <element signature="e#447#448#0" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
+            <element signature="e#447#448#0" expanded="false" />
+            <element signature="e#478#479#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -750,7 +682,7 @@
         <state relative-caret-position="15">
           <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -825,8 +757,8 @@
         <state relative-caret-position="60">
           <caret line="4" column="8" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="23" />
           <folding>
-            <element signature="e#118#119#0" expanded="true" />
-            <element signature="e#148#149#0" expanded="true" />
+            <element signature="e#118#119#0" expanded="false" />
+            <element signature="e#148#149#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -944,7 +876,7 @@
     <entry file="file://$PROJECT_DIR$/src/Model/ADT/Interfaces/MyIHeap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -954,10 +886,10 @@
     <entry file="file://$PROJECT_DIR$/src/Controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="511">
-          <caret line="52" column="18" lean-forward="true" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
+          <caret line="52" column="18" lean-forward="false" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1510916068781" expanded="true" signature="1826:1945" ph="{...}" />
+            <marker date="1510916561216" expanded="true" signature="1826:1945" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -986,7 +918,7 @@
     <entry file="file://$PROJECT_DIR$/src/Model/Statement/IfStmt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
-          <caret line="22" column="31" lean-forward="true" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+          <caret line="22" column="31" lean-forward="false" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1036,7 +968,7 @@
     <entry file="file://$PROJECT_DIR$/src/Model/Expression/HeapReadingExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="25" lean-forward="true" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1050,6 +982,18 @@
           <folding>
             <element signature="e#1229#1230#0" expanded="true" />
             <element signature="e#1256#1257#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Expression/BoolExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="18" column="95" lean-forward="false" selection-start-line="18" selection-start-column="95" selection-end-line="18" selection-end-column="95" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1394#1395#0" expanded="true" />
+            <element signature="e#1453#1454#0" expanded="true" />
           </folding>
         </state>
       </provider>
