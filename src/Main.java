@@ -8,6 +8,7 @@ import View.Console;
 
 import java.util.ArrayList;
 
+import static Model.Expression.Operation.MULTIPLY;
 import static Model.Expression.Operation.PLUS;
 
 public class Main {
@@ -74,17 +75,16 @@ public class Main {
                         new BoolExpr(new ConstExpr(2), new ConstExpr(6), "<"))),
                 new PrintStmt(new VarExpr("sum")));
 
-//        IStmt ex6 = new CompStmt(
-//                new AssignStmt("v", new ConstExpr(10)),
-//                new CompStmt(
-//                        new AssignStmt("w", new BoolExpr(new ConstExpr(2), new ConstExpr(6), "<")),
-//                        new CompStmt(
-//                                new
-//                        )
-//                )
-//                new ArithExpr(
-//                PLUS,
-//        ));
+//        v=6; (while (v-4) print(v);v=v-1);print(v)
+        IStmt ex7 = new CompStmt(
+                new AssignStmt("v", new ConstExpr(6)),
+                new CompStmt(
+                        new WhileStmt(new ArithExpr(Operation.MINUS, new VarExpr("v"), new ConstExpr(4)),
+                                new CompStmt(new PrintStmt(new VarExpr("v")),
+                                        new AssignStmt("v", new ArithExpr(Operation.MINUS, new VarExpr("v"), new ConstExpr(1))))),
+                                new PrintStmt(new VarExpr("v"))
+                )
+        );
 
         MyList<IStmt> stmtlst = new MyList<>(new ArrayList<>());
         stmtlst.add(ex1);
@@ -93,6 +93,7 @@ public class Main {
         stmtlst.add(ex4);
         stmtlst.add(ex5);
         stmtlst.add(ex6);
+        stmtlst.add(ex7);
 
 
         return stmtlst;
