@@ -8,14 +8,16 @@ import View.Console;
 
 import java.util.ArrayList;
 
+import static Model.Expression.Operation.PLUS;
+
 public class Main {
     private static MyList<IStmt> getStatements() {
         IStmt ex1 = new CompStmt(new AssignStmt("v", new ConstExpr(2)),
                 new PrintStmt(new VarExpr("v")));
 
-        IStmt ex2 =  new CompStmt(new AssignStmt("a", new ArithExpr(Operation.PLUS, new ConstExpr(2), new
+        IStmt ex2 =  new CompStmt(new AssignStmt("a", new ArithExpr(PLUS, new ConstExpr(2), new
                 ArithExpr(Operation.MULTIPLY, new ConstExpr(3), new ConstExpr(5)))),
-                new CompStmt(new AssignStmt("b", new ArithExpr(Operation.PLUS, new VarExpr("a"), new
+                new CompStmt(new AssignStmt("b", new ArithExpr(PLUS, new VarExpr("a"), new
                         ConstExpr(1))), new PrintStmt(new VarExpr("b"))));
 
         IStmt ex3 = new CompStmt(new AssignStmt("a", new ArithExpr(Operation.MINUS,new ConstExpr(2), new ConstExpr(2))),
@@ -63,12 +65,34 @@ public class Main {
                 )
         );
 
+//        10 + (2<6) evaluates to 11
+
+        IStmt ex6 = new CompStmt(
+                new AssignStmt("sum", new ArithExpr(
+                        Operation.PLUS,
+                        new ConstExpr(10),
+                        new BoolExpr(new ConstExpr(2), new ConstExpr(6), "<"))),
+                new PrintStmt(new VarExpr("sum")));
+
+//        IStmt ex6 = new CompStmt(
+//                new AssignStmt("v", new ConstExpr(10)),
+//                new CompStmt(
+//                        new AssignStmt("w", new BoolExpr(new ConstExpr(2), new ConstExpr(6), "<")),
+//                        new CompStmt(
+//                                new
+//                        )
+//                )
+//                new ArithExpr(
+//                PLUS,
+//        ));
+
         MyList<IStmt> stmtlst = new MyList<>(new ArrayList<>());
         stmtlst.add(ex1);
         stmtlst.add(ex2);
         stmtlst.add(ex3);
         stmtlst.add(ex4);
         stmtlst.add(ex5);
+        stmtlst.add(ex6);
 
 
         return stmtlst;

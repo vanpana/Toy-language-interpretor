@@ -45,6 +45,6 @@ public class BoolExpr extends Expr{
 
     @Override
     public String toString() {
-        return expr1 + " " + operator + " " + expr2;
+        return "(" + expr1 + " " + operator + " " + expr2 + ")";
     }
 }
