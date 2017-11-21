@@ -4,6 +4,8 @@ import Model.Exceptions.ADTEmptyException;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public interface MyIDictionary<K, V> {
     void put(K key, V value);
@@ -16,5 +18,6 @@ public interface MyIDictionary<K, V> {
 //    HashMap<K, V> getItems();
     void setContent(HashMap<K, V> map);
     HashMap<K, V> getContent();
+    Set<Map.Entry<K,V>> entrySey();
     String toString();
 }

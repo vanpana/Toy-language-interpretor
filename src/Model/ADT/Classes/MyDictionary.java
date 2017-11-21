@@ -3,9 +3,7 @@ package Model.ADT.Classes;
 import Model.ADT.Interfaces.MyIDictionary;
 import Model.Exceptions.ADTEmptyException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class MyDictionary<K, V> implements MyIDictionary<K,V> {
     private HashMap<K, V> dict;
@@ -48,7 +46,12 @@ public class MyDictionary<K, V> implements MyIDictionary<K,V> {
         dict.remove(key);
     }
 
-//    @Override
+    @Override
+    public Set<Map.Entry<K, V>> entrySey() {
+        return dict.entrySet();
+    }
+
+    //    @Override
 //    public MyIDictionary<K, V> clone() {
 //        MyIDictionary<K, V> newdict = new MyDictionary<>(new HashMap<>());
 //

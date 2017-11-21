@@ -1,10 +1,14 @@
 package Controller;
 
+import Model.ADT.Classes.MyFileReader;
+import Model.ADT.Interfaces.MyIDictionary;
 import Model.ADT.Interfaces.MyIHeap;
 import Model.ADT.Interfaces.MyIStack;
 import Model.Exceptions.ToyException;
+import Model.Expression.ConstExpr;
 import Model.PrgState;
 import Model.Statement.IStmt;
+import Model.Statement.closeRFile;
 import Repository.IRepository;
 
 import java.util.Collection;
@@ -27,6 +31,11 @@ public class Controller {
         return heap.entrySet().stream()
                 .filter(e->symTableValues.contains(e.getKey())).
                         collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
+
+    private void closeAllFiles(MyIDictionary<Integer, MyFileReader> fileTable) {
+        fileTable.entrySey().forEach(
+                key->new closeRFile(new ConstExpr(key.getKey())));
     }
 
     private PrgState oneStep(PrgState state) throws ToyException {
@@ -56,6 +65,9 @@ public class Controller {
                 //display program state eventually
             } catch (ToyException e) {
                 throw new ToyException(e.getMessage());
+            }
+            finally {
+                closeAllFiles(prg.getFileTable());
             }
         }
     }
