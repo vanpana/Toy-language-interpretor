@@ -6,7 +6,7 @@ import Model.Exceptions.ADTEmptyException;
 import java.util.ArrayList;
 
 public class MyList<T> implements MyIList<T> {
-    private ArrayList<T> list;
+    private final ArrayList<T> list;
 
     public MyList(ArrayList<T> lst) { list = lst; }
 

@@ -1,10 +1,9 @@
 package Model.Statement;
 
-import Model.Exceptions.ToyException;
 import Model.PrgState;
 
 public class ForkStmt implements IStmt {
-    private IStmt stmt;
+    private final IStmt stmt;
 
     public ForkStmt(IStmt stmt) {
         this.stmt = stmt;

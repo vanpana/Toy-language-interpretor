@@ -9,8 +9,8 @@ import Model.Statement.IStmt;
 import java.util.Scanner;
 
 public class Console {
-    private Controller ctrl;
-    private MyList<IStmt> statements;
+    private final Controller ctrl;
+    private final MyList<IStmt> statements;
 
     public Console(Controller ctrl, MyList<IStmt> statements) {
         this.ctrl = ctrl;

@@ -12,8 +12,8 @@ import java.io.IOException;
 
 public class OpenRFile implements IStmt{
     private static int fd = 2;
-    private String var_file_id;
-    private String filename;
+    private final String var_file_id;
+    private final String filename;
 
     public OpenRFile(String var_file_id, String filename) {
         this.var_file_id = var_file_id;

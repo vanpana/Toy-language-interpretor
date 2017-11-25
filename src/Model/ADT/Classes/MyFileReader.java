@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class MyFileReader {
-    private String filename;
-    private BufferedReader breader;
+    private final String filename;
+    private final BufferedReader breader;
 
     public MyFileReader(String filename, BufferedReader breader) {
         this.filename = filename;

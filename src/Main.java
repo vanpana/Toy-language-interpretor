@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import static Model.Expression.Operation.PLUS;
 
-public class Main {
+class Main {
     private static MyList<IStmt> getStatements() {
         IStmt ex1 = new CompStmt(new AssignStmt("v", new ConstExpr(2)),
                 new PrintStmt(new VarExpr("v")));

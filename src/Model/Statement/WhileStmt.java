@@ -1,13 +1,12 @@
 package Model.Statement;
 
-import Model.ADT.Interfaces.MyIStack;
 import Model.Exceptions.ToyException;
 import Model.Expression.Expr;
 import Model.PrgState;
 
 public class WhileStmt implements IStmt{
-    private Expr expr;
-    private IStmt stmt;
+    private final Expr expr;
+    private final IStmt stmt;
 
     public WhileStmt(Expr expr, IStmt stmt) {
         this.expr = expr;

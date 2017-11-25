@@ -5,7 +5,7 @@ import Model.Expression.Expr;
 import Model.PrgState;
 
 public class PrintStmt implements IStmt {
-    private Expr expression;
+    private final Expr expression;
 
     public PrintStmt(Expr expr){ expression = expr; }
 

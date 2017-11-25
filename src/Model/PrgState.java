@@ -36,10 +36,6 @@ public class PrgState {
         return id;
     }
 
-    public MyIStack<IStmt> getExeStack() {
-        return exeStack;
-    }
-
     public MyIList<Integer> getOut() {
         return out;
     }
@@ -63,10 +59,6 @@ public class PrgState {
         this.id = id;
     }
 
-    public void setExeStack(MyIStack<IStmt> exeStack) {
-        this.exeStack = exeStack;
-    }
-
     public void setSymTable(MyIDictionary<String, Integer> symTable) {
         this.symTable = symTable;
     }
@@ -87,9 +79,9 @@ public class PrgState {
         this.out.add(number);
     }
 
-    boolean isNotCompleted() { return !exeStack.isEmpty(); }
+    public boolean isNotCompleted() { return !exeStack.isEmpty(); }
 
-    private PrgState oneStep() throws ToyException {
+    public PrgState oneStep() throws ToyException {
         if (exeStack.isEmpty()) throw new ToyException("Stack empty");
         IStmt currentStatement = exeStack.pop();
         return currentStatement.execute(this);

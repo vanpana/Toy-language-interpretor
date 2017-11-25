@@ -4,7 +4,7 @@ import Model.ADT.Interfaces.MyIDictionary;
 import Model.ADT.Interfaces.MyIHeap;
 
 public class ConstExpr extends Expr {
-    private int number;
+    private final int number;
 
     public ConstExpr(int number) {
         this.number = number;

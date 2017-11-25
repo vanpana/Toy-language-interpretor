@@ -5,8 +5,9 @@ import Model.ADT.Interfaces.MyIHeap;
 import Model.Exceptions.ToyException;
 
 public class BoolExpr extends Expr{
-    private Expr expr1, expr2;
-    private String operator;
+    private final Expr expr1;
+    private final Expr expr2;
+    private final String operator;
 
     public BoolExpr(Expr expr1, Expr expr2, String operator) {
         this.expr1 = expr1;

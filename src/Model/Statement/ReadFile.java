@@ -6,8 +6,8 @@ import Model.Expression.Expr;
 import Model.PrgState;
 
 public class ReadFile implements IStmt {
-    private Expr expr_file_id;
-    private String var_name;
+    private final Expr expr_file_id;
+    private final String var_name;
 
     public ReadFile(Expr expr_file_id, String var_name) {
         this.expr_file_id = expr_file_id;

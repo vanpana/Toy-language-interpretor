@@ -29,7 +29,7 @@ public class MyHeap<V> implements MyIHeap<V>{
     }
 
     @Override
-    public List<V> values() throws ADTEmptyException {
+    public List<V> values() {
         //TODO: if (dict.isEmpty()) throw new ADTEmptyException("Dict is empty");
         return new ArrayList<>(dict.values());
     }

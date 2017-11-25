@@ -5,7 +5,7 @@ import Model.ADT.Interfaces.MyIHeap;
 import Model.Exceptions.ADTEmptyException;
 
 public class VarExpr extends Expr {
-    private String id;
+    private final String id;
 
     public VarExpr(String id) {
         this.id = id;

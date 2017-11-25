@@ -5,7 +5,7 @@ import Model.Exceptions.ADTEmptyException;
 import java.util.ArrayDeque;
 
 public class MyStack<T> implements MyIStack<T> {
-    private ArrayDeque<T> stack;
+    private final ArrayDeque<T> stack;
 
     public MyStack(ArrayDeque<T> stk) { stack = stk; }
     @Override

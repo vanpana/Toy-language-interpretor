@@ -10,7 +10,7 @@ import java.util.Set;
 public interface MyIDictionary<K, V> {
     void put(K key, V value);
     V get(K key) throws ADTEmptyException;
-    List<V> values() throws ADTEmptyException;
+    List<V> values();
 //    List<K> keys() throws ADTEmptyException;
     void remove(K key) throws ADTEmptyException;
     boolean isDefined(K key) throws ADTEmptyException;

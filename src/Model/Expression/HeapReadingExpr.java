@@ -6,7 +6,7 @@ import Model.Exceptions.HeapException;
 import Model.Exceptions.ToyException;
 
 public class HeapReadingExpr extends Expr {
-    private String var_name;
+    private final String var_name;
 
     public HeapReadingExpr(String var_name) {
         this.var_name = var_name;

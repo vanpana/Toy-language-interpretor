@@ -6,8 +6,8 @@ import Model.Expression.Expr;
 import Model.PrgState;
 
 public class HeapWritingStmt implements IStmt {
-    private String var_name;
-    private Expr expr;
+    private final String var_name;
+    private final Expr expr;
 
     public HeapWritingStmt(String var_name, Expr expr) {
         this.var_name = var_name;

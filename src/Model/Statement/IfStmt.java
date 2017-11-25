@@ -6,9 +6,9 @@ import Model.Expression.Expr;
 import Model.PrgState;
 
 public class IfStmt implements IStmt{
-    private Expr expression;
-    private IStmt thenS;
-    private IStmt elseS;
+    private final Expr expression;
+    private final IStmt thenS;
+    private final IStmt elseS;
 
     public IfStmt(Expr e, IStmt then, IStmt els){
         expression = e;

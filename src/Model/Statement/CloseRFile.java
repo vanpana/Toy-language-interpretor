@@ -7,7 +7,7 @@ import Model.Expression.Expr;
 import Model.PrgState;
 
 public class CloseRFile implements IStmt {
-    private Expr expr_file_id;
+    private final Expr expr_file_id;
 
     public CloseRFile(Expr expr_file_id) {
         this.expr_file_id = expr_file_id;

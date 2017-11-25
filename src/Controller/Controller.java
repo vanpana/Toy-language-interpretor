@@ -1,18 +1,17 @@
 package Controller;
 
 import Model.Exceptions.ToyException;
-import Model.Expression.ConstExpr;
 import Model.PrgState;
-import Model.Statement.CloseRFile;
 import Repository.IRepository;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
+import java.util.*;
+import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
 public class Controller {
-    private IRepository repo;
+    private final IRepository repo;
+    private ExecutorService executor;
 
     public Controller(IRepository repo) {
         this.repo = repo;
@@ -22,41 +21,82 @@ public class Controller {
         repo.setCurrentProgram(state);
     }
 
-    private Map<Integer,Integer> conservativeGarbageCollector(Collection<Integer> symTableValues, Map<Integer, Integer> heap){
-        return heap.entrySet().stream()
-                .filter(e->symTableValues.contains(e.getKey())).
-                        collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    }
+//    private Map<Integer,Integer> conservativeGarbageCollector(Collection<Integer> symTableValues, Map<Integer, Integer> heap){
+//        return heap.entrySet().stream()
+//                .filter(e->symTableValues.contains(e.getKey())).
+//                        collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+//    }
+//
+//    private void closeAllFiles(PrgState prg) {
+//        prg.getFileTable().entrySey().forEach(
+//                key -> {
+//                    try {
+//                        new CloseRFile(new ConstExpr(key.getKey())).execute(prg);
+//                    } catch (ToyException e) {
+//                        System.out.println(e.getMessage());
+//                    }
+//                });
+//    }
 
-    private void closeAllFiles(PrgState prg) {
-        prg.getFileTable().entrySey().forEach(
-                key -> {
-                    try {
-                        new CloseRFile(new ConstExpr(key.getKey())).execute(prg);
-                    } catch (ToyException e) {
+    private void oneStepForAllPrg(List<PrgState> prgList) throws InterruptedException {
+        prgList.forEach(prg -> {
+            try {
+                repo.logPrgStateExec(prg);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        List<Callable<PrgState>> callList = prgList.stream()
+                .map((PrgState p) -> (Callable<PrgState>)(p::oneStep))
+                .collect(Collectors.toList());
+
+        List<PrgState> newPrgList = executor.invokeAll(callList).stream().
+                map(future -> {
+                    try{
+                        return future.get();
+                    }
+                    catch (InterruptedException|ExecutionException e){
                         System.out.println(e.getMessage());
                     }
-                });
+                    return null;
+                }).filter(Objects::nonNull).collect(Collectors.toList());
+
+        prgList.addAll(newPrgList);
+
+        prgList.forEach(prg -> {
+            try {
+                repo.logPrgStateExec(prg);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        repo.setPrgList(prgList);
+
     }
 
     public void allSteps() throws ToyException {
-        // getting just the first program
-        PrgState prg = repo.getCurrentProgram();
-        while (!prg.getStack().isEmpty()) {
-            try {
-                prg = oneStep(prg);
-                prg.getHeap().setContent((HashMap<Integer, Integer>)conservativeGarbageCollector(
-                        prg.getSymTable().getContent().values(),
-                        prg.getHeap().getItems())
-                );
-                repo.logPrgStateExec();
-                System.out.print(prg.toString());
-                //display program state eventually
-            } catch (ToyException e) {
-                throw new ToyException(e.getMessage());
+        executor = Executors.newFixedThreadPool(2);
+        List<PrgState> prgList=removeCompletedPrg(repo.getPrgList());
+        while (prgList.size() > 0){
+            try
+            {
+                oneStepForAllPrg(prgList);
+                prgList=removeCompletedPrg(repo.getPrgList());
+            }
+            catch (InterruptedException ie){
+                throw new ToyException(ie.getMessage());
             }
         }
-        closeAllFiles(prg);
+        executor.shutdownNow();
+        repo.setPrgList(prgList);
+    }
+
+    private List<PrgState> removeCompletedPrg(ArrayList<PrgState> inPrgList) {
+        return inPrgList.stream()
+                .filter(PrgState::isNotCompleted)
+                .collect(Collectors.toList());
     }
 }
 

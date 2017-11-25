@@ -11,7 +11,7 @@ public interface MyIHeap<V> {
     void put(Integer key, V value);
     Set<Integer> keys();
     V get(Integer key) throws ADTEmptyException;
-    List<V> values() throws ADTEmptyException;
+    List<V> values();
     void remove(Integer key) throws ADTEmptyException;
     boolean isDefined(Integer key) throws ADTEmptyException;
     void setContent(HashMap<Integer, V> map);

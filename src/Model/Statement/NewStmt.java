@@ -6,8 +6,8 @@ import Model.PrgState;
 
 public class NewStmt implements IStmt{
     private static int location = 1;
-    private String var_name;
-    private Expr expr;
+    private final String var_name;
+    private final Expr expr;
 
     public NewStmt(String var_name, Expr expr) {
         this.var_name = var_name;

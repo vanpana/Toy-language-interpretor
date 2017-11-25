@@ -7,10 +7,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Repository implements IRepository {
     private ArrayList<PrgState> prgList;
-    private String logFilePath;
+    private final String logFilePath;
 
     public Repository(String logFilePath){
         this.prgList = null;
@@ -25,17 +26,9 @@ public class Repository implements IRepository {
     @Override
     public void logPrgStateExec(PrgState prgState) throws IOException
     {
-
-        try{
-            PrintWriter logFile = new PrintWriter(new BufferedWriter(new FileWriter(logFilePath, true)));
-            logFile.println(prgState.toString());
-
-            logFile.close();
-        }
-        catch (IOException ioe)
-        {
-            throw ioe;
-        }
+        PrintWriter logFile = new PrintWriter(new BufferedWriter(new FileWriter(logFilePath, true)));
+        logFile.println(prgState.toString());
+        logFile.close();
     }
 
     @Override
@@ -44,7 +37,7 @@ public class Repository implements IRepository {
     }
 
     @Override
-    public void setPrgList(ArrayList<PrgState> prgList) {
-        this.prgList = prgList;
+    public void setPrgList(List<PrgState> prgList) {
+        this.prgList = new ArrayList<>(prgList);
     }
 }
