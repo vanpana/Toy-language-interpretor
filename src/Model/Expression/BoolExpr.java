@@ -16,26 +16,26 @@ public class BoolExpr extends Expr{
 
     @Override
     public int eval(MyIDictionary<String, Integer> symTable, MyIHeap<Integer> heap) throws ToyException {
-        int eval1 = expr1.eval(symTable, heap), eval2 = expr2.eval(symTable, heap), result = -1;
+        int lhs = expr1.eval(symTable, heap), rhs = expr2.eval(symTable, heap), result = -1;
         switch (operator)
         {
             case "<":
-                result = eval1 < eval2 ? 1 : 0;
+                result = lhs < rhs ? 1 : 0;
                 break;
             case "<=":
-                result = eval1 <= eval2 ? 1 : 0;
+                result = lhs <= rhs ? 1 : 0;
                 break;
             case "==":
-                result = eval1 == eval2 ? 1 : 0;
+                result = lhs == rhs ? 1 : 0;
                 break;
             case "!=":
-                result = eval1 != eval2 ? 1 : 0;
+                result = lhs != rhs ? 1 : 0;
                 break;
             case ">":
-                result = eval1 > eval2 ? 1 : 0;
+                result = lhs > rhs ? 1 : 0;
                 break;
             case ">=":
-                result = eval1 >= eval2 ? 1 : 0;
+                result = lhs >= rhs ? 1 : 0;
                 break;
         }
 

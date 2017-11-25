@@ -2,7 +2,6 @@ package Controller;
 
 import Model.ADT.Classes.MyFileReader;
 import Model.ADT.Interfaces.MyIDictionary;
-import Model.ADT.Interfaces.MyIHeap;
 import Model.ADT.Interfaces.MyIStack;
 import Model.Exceptions.ToyException;
 import Model.Expression.ConstExpr;
@@ -33,21 +32,22 @@ public class Controller {
                         collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    private void closeAllFiles(MyIDictionary<Integer, MyFileReader> fileTable) {
-        fileTable.entrySey().forEach(
-                key->new closeRFile(new ConstExpr(key.getKey())));
+    private void closeAllFiles(PrgState prg) {
+        prg.getFileTable().entrySey().forEach(
+                key -> {
+                    try {
+                        new closeRFile(new ConstExpr(key.getKey())).execute(prg);
+                    } catch (ToyException e) {
+                        System.out.println(e.getMessage());
+                    }
+                });
     }
 
     private PrgState oneStep(PrgState state) throws ToyException {
         MyIStack<IStmt> stack = state.getStack();
         IStmt currentStatement;
-        try {
-            currentStatement = stack.pop();
-            return currentStatement.execute(state);
-        } catch (ToyException e) {
-            throw e;
-        }
-
+        currentStatement = stack.pop();
+        return currentStatement.execute(state);
     }
 
     public void allSteps() throws ToyException {
@@ -66,10 +66,8 @@ public class Controller {
             } catch (ToyException e) {
                 throw new ToyException(e.getMessage());
             }
-            finally {
-                closeAllFiles(prg.getFileTable());
-            }
         }
+        closeAllFiles(prg);
     }
 }
 
