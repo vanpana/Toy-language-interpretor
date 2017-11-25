@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PrgState {
-    private int id;
+    private int id = 1;
     private MyIStack<IStmt> exeStack;
     private MyIDictionary<String, Integer> symTable;
     private MyIList<Integer> out;

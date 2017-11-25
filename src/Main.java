@@ -85,6 +85,32 @@ class Main {
                 )
         );
 
+        IStmt ex8 = new CompStmt(
+                new AssignStmt("v", new ConstExpr(10)),
+                new CompStmt(
+                        new NewStmt("a", new ConstExpr(22)),
+                        new CompStmt(
+                                new ForkStmt(
+                                        new CompStmt(
+                                                new HeapWritingStmt("a", new ConstExpr(30)),
+                                                new CompStmt(
+                                                        new AssignStmt("v", new ConstExpr(32)),
+                                                        new CompStmt(
+                                                                new PrintStmt(new VarExpr("v")),
+                                                                new PrintStmt(new HeapReadingExpr("a"))
+                                                        )
+                                                )
+                                        )
+
+                                ),
+                                new CompStmt(
+                                        new PrintStmt(new VarExpr("v")),
+                                        new PrintStmt(new HeapReadingExpr("a"))
+                                )
+                        )
+                )
+        );
+
         MyList<IStmt> stmtlst = new MyList<>(new ArrayList<>());
         stmtlst.add(ex1);
         stmtlst.add(ex2);
@@ -93,6 +119,7 @@ class Main {
         stmtlst.add(ex5);
         stmtlst.add(ex6);
         stmtlst.add(ex7);
+        stmtlst.add(ex8);
 
 
         return stmtlst;

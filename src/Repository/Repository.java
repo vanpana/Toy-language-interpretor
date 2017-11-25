@@ -14,13 +14,14 @@ public class Repository implements IRepository {
     private final String logFilePath;
 
     public Repository(String logFilePath){
-        this.prgList = null;
+        this.prgList = new ArrayList<>();
         this.logFilePath = logFilePath;
     }
 
     @Override
     public void setCurrentProgram(PrgState prgState) {
-        this.prgList.set(0, prgState);
+        if (prgList.size() == 0) prgList.add(prgState);
+        else this.prgList.set(0, prgState);
     }
 
     @Override

@@ -42,6 +42,7 @@ public class Controller {
         prgList.forEach(prg -> {
             try {
                 repo.logPrgStateExec(prg);
+                System.out.println(prg.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -67,6 +68,7 @@ public class Controller {
         prgList.forEach(prg -> {
             try {
                 repo.logPrgStateExec(prg);
+                System.out.println(prg.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
