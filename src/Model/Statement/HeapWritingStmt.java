@@ -21,7 +21,7 @@ public class HeapWritingStmt implements IStmt {
             if (state.getHeap().isDefined(location))
                 state.getHeap().put(location, expr.eval(state.getSymTable(), state.getHeap()));
             else throw new HeapException("Value is not found!");
-            return state;
+            return null;
         }
         catch (ToyException e){
             throw new HeapException(e.getMessage());

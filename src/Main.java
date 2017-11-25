@@ -8,7 +8,6 @@ import View.Console;
 
 import java.util.ArrayList;
 
-import static Model.Expression.Operation.MULTIPLY;
 import static Model.Expression.Operation.PLUS;
 
 public class Main {
@@ -27,19 +26,19 @@ public class Main {
 
 
         IStmt ex4 = new CompStmt(
-                new openRFile("var_f", "test.in"),
+                new OpenRFile("var_f", "test.in"),
                 new CompStmt(
                     new CompStmt(
-                            new readFile(new VarExpr("var_f"), "var_c"),
+                            new ReadFile(new VarExpr("var_f"), "var_c"),
                             new PrintStmt(new VarExpr("var_c"))),
                     new CompStmt(
                             new IfStmt(new VarExpr("var_c"),
                                     new CompStmt( //then
-                                            new readFile(new VarExpr("var_f"), "var_c"),
+                                            new ReadFile(new VarExpr("var_f"), "var_c"),
                                             new PrintStmt(new VarExpr("var_c"))),
                                     new PrintStmt(new ConstExpr(1)) //else
                                     ),
-                            new closeRFile(new VarExpr("var_f"))
+                            new CloseRFile(new VarExpr("var_f"))
                     )
 
         )

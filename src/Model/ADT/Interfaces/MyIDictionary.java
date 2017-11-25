@@ -19,5 +19,6 @@ public interface MyIDictionary<K, V> {
     void setContent(HashMap<K, V> map);
     HashMap<K, V> getContent();
     Set<Map.Entry<K,V>> entrySey();
+    MyIDictionary<K,V> cloneMap();
     String toString();
 }

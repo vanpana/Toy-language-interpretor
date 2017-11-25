@@ -24,7 +24,7 @@ public class MyDictionary<K, V> implements MyIDictionary<K,V> {
     }
 
     @Override
-    public List<V> values() throws ADTEmptyException {
+    public List<V> values() {
         //TODO: if (dict.isEmpty()) throw new ADTEmptyException("Dict is empty");
         return new ArrayList<>(dict.values());
     }
@@ -47,19 +47,17 @@ public class MyDictionary<K, V> implements MyIDictionary<K,V> {
     }
 
     @Override
+    public MyIDictionary<K, V> cloneMap() {
+        MyIDictionary<K,V> cloned = new MyDictionary<>(new HashMap<>());
+        for (K key : dict.keySet())
+            cloned.put(key, dict.get(key));
+        return cloned;
+    }
+
+    @Override
     public Set<Map.Entry<K, V>> entrySey() {
         return dict.entrySet();
     }
-
-    //    @Override
-//    public MyIDictionary<K, V> clone() {
-//        MyIDictionary<K, V> newdict = new MyDictionary<>(new HashMap<>());
-//
-//        for (K key: dict.keySet())
-//            newdict.put(key, dict.get(key));
-//
-//        return newdict;
-//    }
 
     @Override
     public HashMap<K, V> getContent() {

@@ -23,7 +23,7 @@ public class AssignStmt implements IStmt {
             throw new ToyException(e.getMessage());
         }
         state.getSymTable().put(id, val);
-        return state;
+        return null;
     }
 
     @Override

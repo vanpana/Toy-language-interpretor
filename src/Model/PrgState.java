@@ -4,6 +4,7 @@ import Model.ADT.Classes.*;
 import Model.ADT.Interfaces.MyIDictionary;
 import Model.ADT.Interfaces.MyIList;
 import Model.ADT.Interfaces.MyIStack;
+import Model.Exceptions.ToyException;
 import Model.Statement.IStmt;
 
 import java.util.ArrayDeque;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PrgState {
+    private int id;
     private MyIStack<IStmt> exeStack;
     private MyIDictionary<String, Integer> symTable;
     private MyIList<Integer> out;
@@ -29,6 +31,19 @@ public class PrgState {
     }
 
     //getters
+
+    public int getId() {
+        return id;
+    }
+
+    public MyIStack<IStmt> getExeStack() {
+        return exeStack;
+    }
+
+    public MyIList<Integer> getOut() {
+        return out;
+    }
+
     public MyIStack<IStmt> getStack() {
         return exeStack;
     }
@@ -43,16 +58,46 @@ public class PrgState {
         return heap;
     }
 
-    //TODO: setters for PrgState
+    //setters
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public void setExeStack(MyIStack<IStmt> exeStack) {
+        this.exeStack = exeStack;
+    }
+
+    public void setSymTable(MyIDictionary<String, Integer> symTable) {
+        this.symTable = symTable;
+    }
+
+    public void setOut(MyIList<Integer> out) {
+        this.out = out;
+    }
+
+    public void setFileTable(MyIDictionary<Integer, MyFileReader> fileTable) {
+        this.fileTable = fileTable;
+    }
+
+    public void setHeap(MyHeap<Integer> heap) {
+        this.heap = heap;
+    }
 
     public void setOut(Integer number) {
         this.out.add(number);
     }
 
+    boolean isNotCompleted() { return !exeStack.isEmpty(); }
+
+    private PrgState oneStep() throws ToyException {
+        if (exeStack.isEmpty()) throw new ToyException("Stack empty");
+        IStmt currentStatement = exeStack.pop();
+        return currentStatement.execute(this);
+    }
+
     @Override
     public String toString() {
-        return "==============PrgState==============" +
+        return "==============PrgState: id = " + String.valueOf(id) + " ==============" +
                 "\n==============exeStack==============\n" + exeStack +
                 "\n==============symTable==============\n" + symTable +
                 "\n==============heap==============\n" + heap +

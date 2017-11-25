@@ -1,13 +1,9 @@
 package Controller;
 
-import Model.ADT.Classes.MyFileReader;
-import Model.ADT.Interfaces.MyIDictionary;
-import Model.ADT.Interfaces.MyIStack;
 import Model.Exceptions.ToyException;
 import Model.Expression.ConstExpr;
 import Model.PrgState;
-import Model.Statement.IStmt;
-import Model.Statement.closeRFile;
+import Model.Statement.CloseRFile;
 import Repository.IRepository;
 
 import java.util.Collection;
@@ -36,18 +32,11 @@ public class Controller {
         prg.getFileTable().entrySey().forEach(
                 key -> {
                     try {
-                        new closeRFile(new ConstExpr(key.getKey())).execute(prg);
+                        new CloseRFile(new ConstExpr(key.getKey())).execute(prg);
                     } catch (ToyException e) {
                         System.out.println(e.getMessage());
                     }
                 });
-    }
-
-    private PrgState oneStep(PrgState state) throws ToyException {
-        MyIStack<IStmt> stack = state.getStack();
-        IStmt currentStatement;
-        currentStatement = stack.pop();
-        return currentStatement.execute(state);
     }
 
     public void allSteps() throws ToyException {

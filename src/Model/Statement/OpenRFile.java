@@ -10,12 +10,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class openRFile implements IStmt{
+public class OpenRFile implements IStmt{
     private static int fd = 2;
     private String var_file_id;
     private String filename;
 
-    public openRFile(String var_file_id, String filename) {
+    public OpenRFile(String var_file_id, String filename) {
         this.var_file_id = var_file_id;
         this.filename = filename;
     }
@@ -31,7 +31,7 @@ public class openRFile implements IStmt{
             BufferedReader reader = new BufferedReader(new FileReader(filename));
             state.getFileTable().put(++fd, new MyFileReader(filename, reader));
             state.getSymTable().put(var_file_id, fd);
-            return state;
+            return null;
         }
         catch (IOException ioe)
         {
@@ -42,6 +42,6 @@ public class openRFile implements IStmt{
 
     @Override
     public String toString() {
-        return "openRFile( " + var_file_id + ", " + filename + ")";
+        return "OpenRFile( " + var_file_id + ", " + filename + ")";
     }
 }

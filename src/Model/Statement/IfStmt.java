@@ -28,7 +28,7 @@ public class IfStmt implements IStmt{
 
         if (val != 0) stack.push(thenS);
         else stack.push(elseS);
-        return state;
+        return null;
     }
 
     @Override

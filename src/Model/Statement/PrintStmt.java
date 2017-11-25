@@ -14,7 +14,7 @@ public class PrintStmt implements IStmt {
             state.setOut(expression.eval(state.getSymTable(), state.getHeap()));
         }
         catch (ToyException e) { throw new ToyException(e.getMessage()); }
-        return state;
+        return null;
     }
 
     @Override

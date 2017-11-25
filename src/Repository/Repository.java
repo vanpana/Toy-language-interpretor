@@ -6,44 +6,45 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class Repository implements IRepository {
-    private PrgState prgState;
+    private ArrayList<PrgState> prgList;
     private String logFilePath;
 
     public Repository(String logFilePath){
-        this.prgState = null;
+        this.prgList = null;
         this.logFilePath = logFilePath;
     }
 
     @Override
-    public PrgState getCurrentProgram() {
-        return prgState;
-    }
-
-    @Override
     public void setCurrentProgram(PrgState prgState) {
-        this.prgState = prgState;
+        this.prgList.set(0, prgState);
     }
 
     @Override
-    public void logPrgStateExec()
+    public void logPrgStateExec(PrgState prgState) throws IOException
     {
 
         try{
             PrintWriter logFile = new PrintWriter(new BufferedWriter(new FileWriter(logFilePath, true)));
-
-            //TODO: How to print them together?
             logFile.println(prgState.toString());
 
             logFile.close();
         }
         catch (IOException ioe)
         {
-            //TODO: cascade throw e
-            System.out.println(ioe.getMessage());
+            throw ioe;
         }
+    }
 
+    @Override
+    public ArrayList<PrgState> getPrgList() {
+        return prgList;
+    }
 
+    @Override
+    public void setPrgList(ArrayList<PrgState> prgList) {
+        this.prgList = prgList;
     }
 }
