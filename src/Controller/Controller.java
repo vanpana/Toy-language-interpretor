@@ -38,7 +38,7 @@ public class Controller {
 //                });
 //    }
 
-    private void oneStepForAllPrg(List<PrgState> prgList) throws InterruptedException {
+    private void log(List<PrgState> prgList) {
         prgList.forEach(prg -> {
             try {
                 repo.logPrgStateExec(prg);
@@ -47,6 +47,10 @@ public class Controller {
                 e.printStackTrace();
             }
         });
+    }
+
+    private void oneStepForAllPrg(List<PrgState> prgList) throws InterruptedException {
+        log(prgList);
 
         List<Callable<PrgState>> callList = prgList.stream()
                 .map((PrgState p) -> (Callable<PrgState>)(p::oneStep))
@@ -65,14 +69,7 @@ public class Controller {
 
         prgList.addAll(newPrgList);
 
-        prgList.forEach(prg -> {
-            try {
-                repo.logPrgStateExec(prg);
-                System.out.println(prg.toString());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+        log(prgList);
 
         repo.setPrgList(prgList);
 
