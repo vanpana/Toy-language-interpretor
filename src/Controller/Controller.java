@@ -13,6 +13,9 @@ public class Controller {
     private final IRepository repo;
     private ExecutorService executor;
 
+    private boolean IS_FINISHED;
+    private List<PrgState> prgList;
+
     public Controller(IRepository repo) {
         this.repo = repo;
     }
@@ -49,7 +52,7 @@ public class Controller {
         });
     }
 
-    private void oneStepForAllPrg(List<PrgState> prgList) throws InterruptedException {
+    public void oneStepForAllPrg(List<PrgState> prgList) throws InterruptedException {
         log(prgList);
 
         List<Callable<PrgState>> callList = prgList.stream()
@@ -92,10 +95,41 @@ public class Controller {
         repo.setPrgList(prgList);
     }
 
-    private List<PrgState> removeCompletedPrg(ArrayList<PrgState> inPrgList) {
+    public List<PrgState> removeCompletedPrg(ArrayList<PrgState> inPrgList) {
         return inPrgList.stream()
                 .filter(PrgState::isNotCompleted)
                 .collect(Collectors.toList());
+    }
+
+    public IRepository getRepo() {
+        return repo;
+    }
+
+    public void setupExecutor() {
+        IS_FINISHED = false;
+        executor = Executors.newFixedThreadPool(2);
+        prgList=removeCompletedPrg(repo.getPrgList());
+    }
+
+    public boolean oneStep() throws ToyException {
+        if (prgList.size() > 0) {
+            try
+            {
+                oneStepForAllPrg(prgList);
+                prgList=removeCompletedPrg(repo.getPrgList());
+                return true;
+            }
+            catch (InterruptedException ie){
+                throw new ToyException(ie.getMessage());
+            }
+        }
+        else if (!IS_FINISHED) {
+            IS_FINISHED = true;
+            executor.shutdownNow();
+            repo.setPrgList(prgList);
+            return false;
+        }
+        return false;
     }
 }
 

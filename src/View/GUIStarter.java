@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class GUIStarter extends Application {
-    // Init GUI
+    // Init GUIController
     public static Stage stage;
 
     @Override

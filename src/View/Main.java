@@ -1,19 +1,19 @@
+package View;
+
 import Controller.Controller;
 import Model.ADT.Classes.MyList;
 import Model.Expression.*;
 import Model.Statement.*;
 import Repository.IRepository;
 import Repository.Repository;
-import View.Console;
-import View.GUI;
 import View.GUIStarter;
 
 import java.util.ArrayList;
 
 import static Model.Expression.Operation.PLUS;
 
-class Main {
-    private static MyList<IStmt> getStatements() {
+public class Main {
+    public static MyList<IStmt> getStatements() {
         IStmt ex1 = new CompStmt(new AssignStmt("v", new ConstExpr(2)),
                 new PrintStmt(new VarExpr("v")));
 
