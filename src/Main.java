@@ -5,6 +5,8 @@ import Model.Statement.*;
 import Repository.IRepository;
 import Repository.Repository;
 import View.Console;
+import View.GUI;
+import View.GUIStarter;
 
 import java.util.ArrayList;
 
@@ -128,8 +130,8 @@ class Main {
     public static void main(String[] args){
         IRepository repo = new Repository("log.txt");
         Controller ctrl = new Controller(repo);
-        Console console = new Console(ctrl, getStatements());
-
-        console.runApp();
+        // Console console = new Console(ctrl, getStatements());
+        // console.runApp();
+        GUIStarter.runApp();
     }
 }
