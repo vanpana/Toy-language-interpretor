@@ -62,11 +62,15 @@ public class GUIController implements Initializable {
     public TableColumn heaptable_address;
 
     @FXML
+    public ListView<Integer> outlist;
+
+    @FXML
     public Button onestep_button;
 
     private void reset() {
         onestep_button.setVisible(true);
         heaptable.getItems().remove(0, heaptable.getItems().size());
+        outlist.getItems().remove(0, outlist.getItems().size());
     }
 
     private void setupStatementList() {
@@ -104,6 +108,7 @@ public class GUIController implements Initializable {
 
     private void refreshAll() {
         refreshHeapTable();
+        refreshOutlist();
     }
 
     private void refreshHeapTable() {
@@ -134,6 +139,18 @@ public class GUIController implements Initializable {
         heaptable.setItems(items);
         heaptable.getColumns().setAll(column1, column2);
 
+    }
+
+    private void refreshOutlist() {
+        //outlist.setItems(FXCollections.observableArrayList(ctrl.getLog()));
+        List<Integer> out = new ArrayList<>();
+        for (int i = 0; i < ctrl.getRepo().getPrgList().get(0).getOut().size(); i++)
+            try {
+                out.add(ctrl.getRepo().getPrgList().get(0).getOut().get(i));
+            } catch (ADTEmptyException e) {
+                // TODO: handle
+            }
+        outlist.setItems(FXCollections.observableList(out));
     }
 
     @Override

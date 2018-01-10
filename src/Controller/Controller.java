@@ -16,6 +16,8 @@ public class Controller {
     private boolean IS_FINISHED;
     private List<PrgState> prgList;
 
+    private String log = "";
+
     public Controller(IRepository repo) {
         this.repo = repo;
     }
@@ -46,10 +48,19 @@ public class Controller {
             try {
                 repo.logPrgStateExec(prg);
                 System.out.println(prg.toString());
+                addLog(prg.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
+    }
+
+    private void addLog(String to_log) {
+        log += to_log;
+    }
+
+    public String getLog() {
+        return log;
     }
 
     public void oneStepForAllPrg(List<PrgState> prgList) throws InterruptedException {
