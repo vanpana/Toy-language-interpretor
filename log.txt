@@ -5206,3 +5206,291 @@
 ==============FileTable==============
 {}
 
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[OpenRFile( var_f, test.in); ReadFile(var_f, var_c); print(var_c); if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{}
+==============heap==============
+{}
+==============out==============
+[]
+==============FileTable==============
+{}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[OpenRFile( var_f, test.in), ReadFile(var_f, var_c); print(var_c); if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{}
+==============heap==============
+{}
+==============out==============
+[]
+==============FileTable==============
+{}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[OpenRFile( var_f, test.in), ReadFile(var_f, var_c); print(var_c); if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{}
+==============heap==============
+{}
+==============out==============
+[]
+==============FileTable==============
+{}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[ReadFile(var_f, var_c); print(var_c); if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3}
+==============heap==============
+{}
+==============out==============
+[]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[ReadFile(var_f, var_c); print(var_c); if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3}
+==============heap==============
+{}
+==============out==============
+[]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[ReadFile(var_f, var_c); print(var_c), if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3}
+==============heap==============
+{}
+==============out==============
+[]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[ReadFile(var_f, var_c); print(var_c), if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3}
+==============heap==============
+{}
+==============out==============
+[]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[ReadFile(var_f, var_c), print(var_c), if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3}
+==============heap==============
+{}
+==============out==============
+[]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[ReadFile(var_f, var_c), print(var_c), if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3}
+==============heap==============
+{}
+==============out==============
+[]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[print(var_c), if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============heap==============
+{}
+==============out==============
+[]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[print(var_c), if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============heap==============
+{}
+==============out==============
+[]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============heap==============
+{}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1); closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============heap==============
+{}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============heap==============
+{}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[if(var_c) then ReadFile(var_f, var_c); print(var_c) else print(1), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============heap==============
+{}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[ReadFile(var_f, var_c); print(var_c), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============heap==============
+{}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[ReadFile(var_f, var_c); print(var_c), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============heap==============
+{}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[ReadFile(var_f, var_c), print(var_c), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============heap==============
+{}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[ReadFile(var_f, var_c), print(var_c), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=15}
+==============heap==============
+{}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[print(var_c), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=50}
+==============heap==============
+{}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[print(var_c), closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=50}
+==============heap==============
+{}
+==============out==============
+[15]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=50}
+==============heap==============
+{}
+==============out==============
+[15, 50]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[closeFile(var_f)]
+==============symTable==============
+{var_f=3, var_c=50}
+==============heap==============
+{}
+==============out==============
+[15, 50]
+==============FileTable==============
+{3=test.in}
+
+==============PrgState: id = 1 ==============
+==============exeStack==============
+[]
+==============symTable==============
+{var_f=3, var_c=50}
+==============heap==============
+{}
+==============out==============
+[15, 50]
+==============FileTable==============
+{}
+

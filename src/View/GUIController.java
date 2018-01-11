@@ -2,6 +2,7 @@ package View;
 
 import Controller.Controller;
 import Model.ADT.Classes.MyDictionary;
+import Model.ADT.Classes.MyFileReader;
 import Model.ADT.Interfaces.MyIDictionary;
 import Model.Exceptions.ADTEmptyException;
 import Model.Exceptions.ToyException;
@@ -65,12 +66,16 @@ public class GUIController implements Initializable {
     public ListView<Integer> outlist;
 
     @FXML
+    public TableView<Map.Entry<Integer, MyFileReader>> filetable;
+
+    @FXML
     public Button onestep_button;
 
     private void reset() {
         onestep_button.setVisible(true);
         heaptable.getItems().remove(0, heaptable.getItems().size());
         outlist.getItems().remove(0, outlist.getItems().size());
+        filetable.getItems().remove(0, heaptable.getItems().size());
     }
 
     private void setupStatementList() {
@@ -109,6 +114,7 @@ public class GUIController implements Initializable {
     private void refreshAll() {
         refreshHeapTable();
         refreshOutlist();
+        refreshFileTable();
     }
 
     private void refreshHeapTable() {
@@ -142,7 +148,6 @@ public class GUIController implements Initializable {
     }
 
     private void refreshOutlist() {
-        //outlist.setItems(FXCollections.observableArrayList(ctrl.getLog()));
         List<Integer> out = new ArrayList<>();
         for (int i = 0; i < ctrl.getRepo().getPrgList().get(0).getOut().size(); i++)
             try {
@@ -153,6 +158,34 @@ public class GUIController implements Initializable {
         outlist.setItems(FXCollections.observableList(out));
     }
 
+    private void refreshFileTable() {
+        // use fully detailed type for Map.Entry<String, String>
+        TableColumn<Map.Entry<Integer, MyFileReader>, String> column1 = new TableColumn<>("Key");
+        column1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<Integer, MyFileReader>, String>, ObservableValue<String>>() {
+
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Map.Entry<Integer, MyFileReader>, String> p) {
+                // this callback returns property for just one cell, you can't use a loop here
+                // for first column we use key
+                return new SimpleStringProperty(String.valueOf(p.getValue().getKey()));
+            }
+        });
+
+        TableColumn<Map.Entry<Integer, MyFileReader>, String> column2 = new TableColumn<>("Value");
+        column2.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<Integer, MyFileReader>, String>, ObservableValue<String>>() {
+
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Map.Entry<Integer, MyFileReader>, String> p) {
+                // for second column we use value
+                return new SimpleStringProperty(String.valueOf(p.getValue().getValue()));
+            }
+        });
+
+        ObservableList<Map.Entry<Integer, MyFileReader>> items = FXCollections.observableArrayList(ctrl.getRepo().getPrgList().get(0).getFileTable().getContent().entrySet());
+
+        filetable.setItems(items);
+        filetable.getColumns().setAll(column1, column2);
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         noOfStatements.setText("No of stmts: " + String.valueOf(statements_list.size()));
