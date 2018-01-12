@@ -35,6 +35,7 @@ public class GUIController implements Initializable {
     private final Controller ctrl;
     private final ArrayList<String> statements_list;
     private int currentStmt;
+    private int currentID;
 
     public GUIController() {
         this.ctrl = new Controller(new Repository("log.txt"));
@@ -69,13 +70,22 @@ public class GUIController implements Initializable {
     public TableView<Map.Entry<Integer, MyFileReader>> filetable;
 
     @FXML
+    public ListView<Integer> prgstate_id;
+
+    @FXML
+    public TableView<Map.Entry<String, Integer>> symtable;
+
+    @FXML
     public Button onestep_button;
 
     private void reset() {
         onestep_button.setVisible(true);
         heaptable.getItems().remove(0, heaptable.getItems().size());
         outlist.getItems().remove(0, outlist.getItems().size());
-        filetable.getItems().remove(0, heaptable.getItems().size());
+        filetable.getItems().remove(0, filetable.getItems().size());
+        prgstate_id.getItems().remove(0, prgstate_id.getItems().size());
+        currentID = 1;
+        symtable.getItems().remove(0, symtable.getItems().size());
     }
 
     private void setupStatementList() {
@@ -115,6 +125,8 @@ public class GUIController implements Initializable {
         refreshHeapTable();
         refreshOutlist();
         refreshFileTable();
+        refreshPrgStateIDs();
+        refreshSymTable();
     }
 
     private void refreshHeapTable() {
@@ -186,10 +198,78 @@ public class GUIController implements Initializable {
         filetable.setItems(items);
         filetable.getColumns().setAll(column1, column2);
     }
+
+    private void setupPrgStateIDs() {
+        prgstate_id.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                currentID = prgstate_id.getSelectionModel().getSelectedItem();
+                refreshSymTable();
+            }
+        });
+    }
+
+    private void refreshPrgStateIDs() {
+        ArrayList<Integer> ids = new ArrayList<>();
+        for (int i = 0; i < ctrl.getRepo().getPrgList().size(); i++)
+            ids.add(ctrl.getRepo().getPrgList().get(i).getId());
+
+        prgstate_id.setItems(FXCollections.observableArrayList(ids));
+
+        int counter = 0;
+        for (counter = 0; counter < prgstate_id.getItems().size(); counter++)
+            if (prgstate_id.getItems().get(counter) == currentID)
+                break;
+
+        prgstate_id.getSelectionModel().select(counter);
+    }
+
+    private void refreshSymTable() {
+        // use fully detailed type for Map.Entry<String, String>
+        TableColumn<Map.Entry<String, Integer>, String> column1 = new TableColumn<>("Key");
+        column1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<String, Integer>, String>, ObservableValue<String>>() {
+
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Map.Entry<String, Integer>, String> p) {
+                // this callback returns property for just one cell, you can't use a loop here
+                // for first column we use key
+                return new SimpleStringProperty(String.valueOf(p.getValue().getKey()));
+            }
+        });
+
+        TableColumn<Map.Entry<String, Integer>, String> column2 = new TableColumn<>("Value");
+        column2.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<String, Integer>, String>, ObservableValue<String>>() {
+
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Map.Entry<String, Integer>, String> p) {
+                // for second column we use value
+                return new SimpleStringProperty(String.valueOf(p.getValue().getValue()));
+            }
+        });
+
+        int counter = -1;
+        for (counter = 0; counter < prgstate_id.getItems().size(); counter++)
+            if (prgstate_id.getItems().get(counter) == currentID)
+                break;
+
+        if (counter != prgstate_id.getItems().size()) {
+            ObservableList<Map.Entry<String, Integer>> items = FXCollections.observableArrayList(ctrl.getRepo().getPrgList().get(counter).getSymTable().getContent().entrySet());
+
+            symtable.setItems(items);
+            symtable.getColumns().setAll(column1, column2);
+        }
+        else {
+            // TODO: Set error label
+            if (prgstate_id.getItems().size() > 0)
+                symtable.getItems().remove(0, prgstate_id.getItems().size());
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         noOfStatements.setText("No of stmts: " + String.valueOf(statements_list.size()));
         setupStatementList();
         setupButton();
+        setupPrgStateIDs();
     }
 }
