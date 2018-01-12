@@ -4,9 +4,11 @@ import Controller.Controller;
 import Model.ADT.Classes.MyDictionary;
 import Model.ADT.Classes.MyFileReader;
 import Model.ADT.Interfaces.MyIDictionary;
+import Model.ADT.Interfaces.MyIStack;
 import Model.Exceptions.ADTEmptyException;
 import Model.Exceptions.ToyException;
 import Model.PrgState;
+import Model.Statement.IStmt;
 import Repository.Repository;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -22,10 +24,7 @@ import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -76,6 +75,9 @@ public class GUIController implements Initializable {
     public TableView<Map.Entry<String, Integer>> symtable;
 
     @FXML
+    public ListView<String> exeStack;
+
+    @FXML
     public Button onestep_button;
 
     private void reset() {
@@ -117,6 +119,7 @@ public class GUIController implements Initializable {
                 }
                 if (!response) onestep_button.setVisible(false);
                 else refreshAll();
+                // TODO: Handle NPE
             }
         });
     }
@@ -127,6 +130,7 @@ public class GUIController implements Initializable {
         refreshFileTable();
         refreshPrgStateIDs();
         refreshSymTable();
+        refreshExeStack();
     }
 
     private void refreshHeapTable() {
@@ -263,6 +267,21 @@ public class GUIController implements Initializable {
             if (prgstate_id.getItems().size() > 0)
                 symtable.getItems().remove(0, prgstate_id.getItems().size());
         }
+    }
+
+    private void refreshExeStack() {
+        ArrayList<String> exeStackList = new ArrayList<>();
+
+        int counter = -1;
+        for (counter = 0; counter < prgstate_id.getItems().size(); counter++)
+            if (prgstate_id.getItems().get(counter) == currentID)
+                break;
+
+        // TODO: Move to function
+
+        ArrayDeque<IStmt> stack = ctrl.getRepo().getPrgList().get(counter).getStack().getStack();
+        stack.forEach(e -> exeStackList.add(e.toString()));
+        exeStack.setItems(FXCollections.observableArrayList(exeStackList));
     }
 
     @Override

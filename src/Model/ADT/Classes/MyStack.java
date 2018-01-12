@@ -3,6 +3,7 @@ package Model.ADT.Classes;
 import Model.ADT.Interfaces.MyIStack;
 import Model.Exceptions.ADTEmptyException;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 
 public class MyStack<T> implements MyIStack<T> {
     private final ArrayDeque<T> stack;
@@ -27,5 +28,10 @@ public class MyStack<T> implements MyIStack<T> {
     @Override
     public String toString() {
         return stack.toString(); //TODO: foreach
+    }
+
+    @Override
+    public ArrayDeque<T> getStack() {
+        return stack;
     }
 }
