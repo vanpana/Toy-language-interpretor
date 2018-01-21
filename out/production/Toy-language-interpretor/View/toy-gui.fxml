@@ -81,6 +81,8 @@
                     <Insets left="350.0" top="50.0"/>
                 </HBox.margin>
             </Button>
+
+            <Label fx:id="messages"></Label>
         </HBox>
     </VBox>
 </HBox>

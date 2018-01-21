@@ -43,8 +43,7 @@ public class GUIController implements Initializable {
             try {
                 statements_list.add(Main.getStatements().get(i).toString());
             } catch (ADTEmptyException e) {
-                // TODO: implement exception
-                e.printStackTrace();
+                messages.setText(e.getMessage());
             }
     }
 
@@ -80,6 +79,9 @@ public class GUIController implements Initializable {
     @FXML
     public Button onestep_button;
 
+    @FXML
+    public Label messages;
+
     private void reset() {
         onestep_button.setVisible(true);
         heaptable.getItems().remove(0, heaptable.getItems().size());
@@ -101,7 +103,7 @@ public class GUIController implements Initializable {
                     ctrl.setMain(new PrgState(Main.getStatements().get(currentStmt)));
                     ctrl.setupExecutor();
                 } catch (ADTEmptyException e) {
-                    // TODO: Handle
+                    messages.setText(e.getMessage());
                 }
             }
         });
@@ -115,11 +117,10 @@ public class GUIController implements Initializable {
                 try {
                     response = ctrl.oneStep();
                 } catch (ToyException e) {
-                    // TODO: handle exception
+                    messages.setText(e.getMessage());
                 }
                 if (!response) onestep_button.setVisible(false);
                 else refreshAll();
-                // TODO: Handle NPE
             }
         });
     }
@@ -169,7 +170,7 @@ public class GUIController implements Initializable {
             try {
                 out.add(ctrl.getRepo().getPrgList().get(0).getOut().get(i));
             } catch (ADTEmptyException e) {
-                // TODO: handle
+                messages.setText(e.getMessage());
             }
         outlist.setItems(FXCollections.observableList(out));
     }
@@ -263,7 +264,7 @@ public class GUIController implements Initializable {
             symtable.getColumns().setAll(column1, column2);
         }
         else {
-            // TODO: Set error label
+            messages.setText("Error setting up symtable");
             if (prgstate_id.getItems().size() > 0)
                 symtable.getItems().remove(0, prgstate_id.getItems().size());
         }
@@ -277,7 +278,6 @@ public class GUIController implements Initializable {
             if (prgstate_id.getItems().get(counter) == currentID)
                 break;
 
-        // TODO: Move to function
 
         ArrayDeque<IStmt> stack = ctrl.getRepo().getPrgList().get(counter).getStack().getStack();
         stack.forEach(e -> exeStackList.add(e.toString()));

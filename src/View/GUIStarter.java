@@ -16,8 +16,6 @@ public class GUIStarter extends Application {
         primaryStage.setTitle("Toy language");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
-        //TODO: Set your icon
-        // primaryStage.getIcons().add(new Image(new File("src/Box13.jpg").toURI().toString()));
         primaryStage.show();
 
         this.stage = primaryStage;
