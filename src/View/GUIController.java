@@ -209,7 +209,7 @@ public class GUIController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 currentID = prgstate_id.getSelectionModel().getSelectedItem();
-                refreshSymTable();
+                refreshAll();
             }
         });
     }

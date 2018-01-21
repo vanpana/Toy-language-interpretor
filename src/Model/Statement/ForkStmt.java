@@ -21,4 +21,9 @@ public class ForkStmt implements IStmt {
 
         return forkedState;
     }
+
+    @Override
+    public String toString() {
+        return "fork(" + stmt + ")";
+    }
 }
